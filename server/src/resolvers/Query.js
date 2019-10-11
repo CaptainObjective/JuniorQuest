@@ -1,4 +1,9 @@
 const Query = {
+  storeItems: async (parent, args, ctx, info) => {
+    const storeItem = await ctx.prisma.query.storeItems(args, info);
+    return storeItem;
+  },
+
   users: async (parent, args, ctx, info) => {
     const user = await ctx.prisma.query.users(args, info);
     return user;
@@ -9,7 +14,7 @@ const Query = {
     }
     const user = await ctx.prisma.query.user({ where: { id: ctx.request.userId } }, info);
     return user;
-  }
+  },
 };
 
 module.exports = Query;
