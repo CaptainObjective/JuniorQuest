@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { Menu } from 'semantic-ui-react';
 import gql from 'graphql-tag';
-import TreeTest from '../Components/Tree/Test';
 
 const Get_User = gql`
   {
@@ -13,7 +12,7 @@ const Get_User = gql`
   }
 `;
 
-const Home = () => {
+const Home = ({children}) => {
   const { data, loading, error } = useQuery(Get_User);
   let [activeItem, setActive] = useState('quests');
 
@@ -35,7 +34,7 @@ const Home = () => {
         </Menu.Item>
         <Menu.Item
           as={NavLink}
-          to="/"
+          to="/store"
           name="rewards"
           active={activeItem === 'rewards'}
           onClick={() => setActive((activeItem = 'rewards'))}
@@ -44,7 +43,7 @@ const Home = () => {
         </Menu.Item>
       </Menu>
       <div>
-        <TreeTest />
+        {children}
       </div>
     </>
   );

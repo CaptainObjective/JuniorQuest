@@ -7,6 +7,7 @@ import Login from './Views/Login';
 import Store from './Views/Store';
 import CreateQuest from './Views/CreateQuest';
 import { useQuery } from '@apollo/react-hooks';
+import TreeTest from './Components/Tree/Test';
 
 export const me = gql`
   query me {
@@ -28,9 +29,11 @@ const App = () => {
   return (
     <Switch>
       <Route path="/login" component={Login} />
+      <Home>
       <Route path="/store" component={Store} />
       <Route path="/createQuest" component={CreateQuest} />
-      <Route path="/" component={Home} />
+      <Route path="/" component={TreeTest} />
+      </Home>
     </Switch>
   );
 };
