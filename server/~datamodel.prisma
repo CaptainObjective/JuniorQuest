@@ -1,0 +1,66 @@
+type User {
+  id: ID! @id
+  email: String! @unique
+  password: String!
+  fullName: String!
+  type: UserType! @default(value: JUNIOR)
+  mentor: User
+  juniors: [User!]!
+  bought_items: [StoreItem!]! 
+}
+
+// type Skill {
+//   id: ID! @id
+//   name: String!
+//   child: [Skill!]!
+// }
+
+type SkillType {
+  id: ID! @id
+  title: String!
+  description: String
+  children: [SkillType!]!
+  parent: SkillType!
+  icon: String
+  junior_complete: Boolean @default(value: false)
+  mentor_complete: Boolean @default(value: false)
+  gold: Int @default(value: 0)
+  type: TaskType! @default(value: TASK)
+  tooltip: {
+    content: String,
+    direction: ToolTipDirection @default(value: TOP)
+  } 
+}
+
+enum ToolTipDirection {
+  TOP
+  LEFT
+  RIGHT
+  BOTTOM
+}
+
+enum TaskType {
+  SOCIAL
+  TECHNOLOGY
+  TASK
+}
+
+enum UserType {
+  MENTOR
+  JUNIOR
+  ADMIN
+}
+
+type StoreItem {
+  id: ID! @id
+  name: String! @unique
+  desctription: String
+  price: Int 
+  icon: String
+}
+
+type Store {
+  id: ID! @id
+  store_item: [StoreItem!]!
+  item_quantity: Int
+}
