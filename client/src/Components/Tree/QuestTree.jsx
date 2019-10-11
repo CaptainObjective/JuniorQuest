@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { SkillProvider, SkillTreeGroup, SkillTree } from 'beautiful-skill-tree';
+import { treeBfs } from '../../Utils/tree';
 
-const data = [
+const treeDataInit = [
   {
     id: 'node1',
     title: 'Node 1',
+    finished: false,
     tooltip: {
       description: 'Node 1',
     },
@@ -12,6 +14,7 @@ const data = [
       {
         id: 'node2',
         title: 'Node 2',
+        finished: false,
         tooltip: {
           description: 'Node 2',
         },
@@ -20,6 +23,7 @@ const data = [
       {
         id: 'node3',
         title: 'Node 3',
+        finished: false,
         tooltip: {
           description: 'Node 3',
         },
@@ -30,9 +34,14 @@ const data = [
 ];
 
 const QuestTree = props => {
-  function handleSave(storage, treeId, skills) {
-    console.log(skills);
-  }
+  const [tree, setTree] = useState(treeDataInit);
+
+  const skillsToTree = skills => {};
+  treeBfs(tree[0], x => console.log(x.id));
+
+  const handleSave = (storage, treeId, skills) => {
+    skillsToTree();
+  };
 
   return (
     <div className="Tree">
@@ -41,7 +50,7 @@ const QuestTree = props => {
           {() => {
             return (
               <React.Fragment>
-                <SkillTree treeId="basic-birch" title="HTML i CSS" data={data} handleSave={handleSave} savedData={[]} />
+                <SkillTree treeId="basic-birch" title="HTML i CSS" data={tree} handleSave={handleSave} savedData={{}} />
               </React.Fragment>
             );
           }}
