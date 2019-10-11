@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import ModalTest from '../Components/Modals/Test';
 
 const Get_User = gql`
   {
@@ -19,7 +20,7 @@ const Home = () => {
   console.log(data);
   return (
     <div>
-      Dziala1
+      <ModalTest />
     </div>
   );
 };
