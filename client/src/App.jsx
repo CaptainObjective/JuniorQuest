@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 
 import Home from './Views/Home';
 import Login from './Views/Login';
+import Store from './Views/Store';
 import { useQuery } from '@apollo/react-hooks';
 
 export const me = gql`
@@ -26,6 +27,7 @@ const App = () => {
   return (
     <Switch>
       <Route path="/login" component={Login} />
+      <Route path="/store" component={Store} />
       <Route path="/" component={Home} />
     </Switch>
   );

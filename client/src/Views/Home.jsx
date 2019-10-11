@@ -17,7 +17,11 @@ const Home = () => {
   if (error) return `Error! ${error.message}`;
 
   console.log(data);
-  return <div>Dziala1</div>;
+  return (
+    <div>
+      Dziala1
+    </div>
+  );
 };
 
 export default Home;
