@@ -1,22 +1,23 @@
 # import * from './generated/prisma.graphql'
 
 type Mutation {
-signUp(data: UserCreateInput!): User!
-signIn(email: String!, password: String!): User
-signOut: Message!
-
-createRecipe(data: RecipeCreateInput!): Recipe!
-updateRecipe(data: RecipeUpdateInput!, where: RecipeWhereUniqueInput!): Recipe
-deleteRecipe(where: RecipeWhereUniqueInput!): Message!
+  signUp(data: UserCreateInput!): User!
+  signIn(email: String!, password: String!): User
+  signOut: Message!
 }
 
 type Query {
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  recipes(where: RecipeWhereInput, orderBy: RecipeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Recipe]!
-  
-  recipe(where: RecipeWhereUniqueInput!): Recipe
+  users(
+    where: UserWhereInput
+    orderBy: UserOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [User]!
   me: User
 }
-type Message{
+type Message {
   message: String!
 }
