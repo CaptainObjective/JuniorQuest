@@ -2,7 +2,13 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const Mutation = {
+  updateStoreItem: async (parent, args, ctx, info) => {
+    const StoreItem = await ctx.prisma.mutation.updateStoreItem(args, info);
+    return StoreItem;
+  },
+
   signUp: async (parent, args, ctx, info) => {
+    // eslint-disable-next-line require-atomic-updates
     args.data.password = await bcrypt.hash(args.data.password, 10);
     const user = await ctx.prisma.mutation.createUser(args, info);
     return user;
@@ -19,7 +25,7 @@ const Mutation = {
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
     ctx.response.cookie('token', token, {
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 365
+      maxAge: 1000 * 60 * 60 * 24 * 365,
     });
 
     return ctx.prisma.query.user({ where: { email: args.email } }, info);
@@ -27,7 +33,7 @@ const Mutation = {
   signOut: async (parent, args, ctx, info) => {
     ctx.response.clearCookie('token');
     return { message: 'Logout' };
-  }
+  },
 };
 
 module.exports = Mutation;
