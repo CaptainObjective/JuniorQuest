@@ -1,7 +1,13 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Home from './Views/Home';
 
 const App = () => {
-  return <div>Dziala</div>;
+  return (
+    <Switch>
+      <Route path="/" component={Home} />
+    </Switch>
+  );
 };
 
 export default App;

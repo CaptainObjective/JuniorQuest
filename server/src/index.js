@@ -3,7 +3,6 @@ require('module').Module._initPaths();
 require('dotenv').config();
 require('express-async-errors');
 
-
 const { GraphQLServer } = require('graphql-yoga');
 const { Prisma } = require('prisma-binding');
 const cookieParser = require('cookie-parser');
@@ -15,7 +14,7 @@ const Query = require('resolvers/Query');
 const prisma = new Prisma({
   typeDefs: 'src/generated/prisma.graphql',
   endpoint: process.env.PRISMA_ENDPOINT,
-  secret: process.env.PRISMA_SECRET,
+  // secret: process.env.PRISMA_SECRET,
   debug: false,
 });
 
@@ -38,7 +37,7 @@ server.express.use((req, res, next) => {
   // console.log(token)
 
   if (!token) {
-    req.userId = null
+    req.userId = null;
   }
   try {
     const { userId } = jwt.verify(token, process.env.JWT_SECRET);
@@ -64,7 +63,7 @@ server.start(
       origin: process.env.CLIENT_URL,
     },
   },
-  (deets) => {
+  deets => {
     console.info(`App is now running on port ${deets.port}`);
   },
 );
