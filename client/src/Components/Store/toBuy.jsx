@@ -1,16 +1,18 @@
-import React from 'react'
+import React from 'react';
 import ItemToBuy from './itemToBuy';
 
 const toBuy = props => {
-    const itemsToBuy = props.items.filter(e => {
-        return e.bought === false;
-    });
+  const itemsToBuy = props.items.filter(e => {
+    return e.bought === false;
+  });
 
-    return (
-        <div>
-            {itemsToBuy.map(e => <ItemToBuy key={`toBuy-${e.name}`} {...e}/>)}
-        </div>
-    )
-}
+  return (
+    <div>
+      {itemsToBuy.map(e => (
+        <ItemToBuy key={`toBuy-${e.name}`} {...e} />
+      ))}
+    </div>
+  );
+};
 
-export default toBuy
+export default toBuy;

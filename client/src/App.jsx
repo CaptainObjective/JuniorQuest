@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import Home from './Views/Home';
 import Login from './Views/Login';
 import Store from './Views/Store';
+import CreateQuest from './Views/CreateQuest';
 import { useQuery } from '@apollo/react-hooks';
 
 export const me = gql`
@@ -22,12 +23,13 @@ const App = () => {
   if (error) return `Error! ${error.message}`;
 
   if (!data.me && window.location.pathname !== '/login') return <Redirect to="/login" />;
-  if (data.me && window.location.pathname !== '/') return <Redirect to="/" />;
+  // if (data.me && window.location.pathname !== '/') return <Redirect to="/" />;
 
   return (
     <Switch>
       <Route path="/login" component={Login} />
       <Route path="/store" component={Store} />
+      <Route path="/createQuest" component={CreateQuest} />
       <Route path="/" component={Home} />
     </Switch>
   );
