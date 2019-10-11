@@ -22,7 +22,7 @@ const App = () => {
   if (error) return `Error! ${error.message}`;
 
   if (!data.me && window.location.pathname !== '/login') return <Redirect to="/login" />;
-  // if (data.me && window.location.pathname !== '/') return <Redirect to="/" />;
+  if (data.me && window.location.pathname !== '/') return <Redirect to="/" />;
 
   return (
     <Switch>
