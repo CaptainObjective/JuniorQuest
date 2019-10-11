@@ -3,10 +3,61 @@ type User {
   email: String! @unique
   password: String!
   fullName: String!
+  type: UserType! @default(value: JUNIOR)
+  mentor: User @relation(name: "MentorRelation")
+  juniors: [User!]! @relation(name: "JuniorRelation")
+  bought_items: [StoreItem!]! 
 }
 
-type Skill{
+type SkillType {
   id: ID! @id
-  name: String!
-  child: [Skill!]!
+  title: String!
+  description: String
+  children: [SkillType!]! @relation(name: "ChildrenRelation")
+  parent: SkillType! @relation(name: "ParentRelation")
+  icon: String
+  junior_complete: Boolean @default(value: false)
+  mentor_complete: Boolean @default(value: false)
+  gold: Int @default(value: 0)
+  type: TaskType!
+  Tooltip: Tooltip!
+}
+
+type Tooltip {
+    id: ID! @id
+    content: String,
+    direction: ToolTipDirection @default(value: TOP)
+}
+
+enum ToolTipDirection {
+  TOP
+  LEFT
+  RIGHT
+  BOTTOM
+}
+
+enum TaskType {
+  SOCIAL
+  TECHNOLOGY
+  TASK
+}
+
+enum UserType {
+  MENTOR
+  JUNIOR
+  ADMIN
+}
+
+type StoreItem {
+  id: ID! @id
+  name: String! @unique
+  desctription: String
+  price: Int 
+  icon: String
+}
+
+type Store {
+  id: ID! @id
+  store_item: [StoreItem!]!
+  item_quantity: Int
 }
