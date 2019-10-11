@@ -3,7 +3,7 @@ type User {
   email: String! @unique
   password: String!
   fullName: String!
-  type: UserType! @default(value: JUNIOR)
+  type: Role! @default(value: JUNIOR)
   mentor: User @relation(name: "MentorRelation")
   juniors: [User!]! @relation(name: "JuniorRelation")
   bought_items: [StoreItem!]! 
@@ -13,6 +13,7 @@ type SkillType {
   id: ID! @id
   title: String!
   description: String
+  user: User @relation(name: "JuniorRelation")
   children: [SkillType!]! @relation(name: "ChildrenRelation")
   parent: SkillType! @relation(name: "ParentRelation")
   icon: String
@@ -42,7 +43,7 @@ enum TaskType {
   TASK
 }
 
-enum UserType {
+enum Role {
   MENTOR
   JUNIOR
   ADMIN
@@ -54,10 +55,5 @@ type StoreItem {
   desctription: String
   price: Int 
   icon: String
-}
-
-type Store {
-  id: ID! @id
-  store_item: [StoreItem!]!
-  item_quantity: Int
+  quantity: Int
 }
