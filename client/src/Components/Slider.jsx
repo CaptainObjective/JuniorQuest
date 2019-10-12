@@ -4,9 +4,9 @@ import { RenderPromises } from '@apollo/react-hooks';
 
 const Slider = props => {
   const [form, setValues] = useState({
-    first: 'OSIĄGNIĘCIA',
+    first: 'REACT',
     second: 'INTEGRACJA',
-    third: 'ZADANIA',
+    third: 'ANGULAR',
   });
 
   const updateField = e => {
