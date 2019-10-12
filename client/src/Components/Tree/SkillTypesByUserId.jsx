@@ -34,14 +34,20 @@ const get_skillTypesByUserId = gql`
   }
 `;
 
-const SubTree = () => {
+const SkillTypesByUserId = () => {
   const { data, loading, error } = useQuery(get_skillTypesByUserId);
-
-  console.log( data );
 
   if (loading) return <p>Loading...</p>;
   if (error) return `Error! ${error.message}`;
 
+  console.log(data.skillTypes)
+
+  return (
+    <div>
+      { data.skillTypes.map( (el) => { return <p key={el.id}>{el.user.fullName} | {el.type} | {el.title}</p>; }) }
+    </div>
+  );
+
 }
 
-export default SubTree;
+export default SkillTypesByUserId;

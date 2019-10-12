@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import QuestTree from './QuestTree';
 import QuestModal from '../Modals/QuestModal';
+import SkillTypesByUserId from './SkillTypesByUserId';
 
 const TreeTest = props => {
   const [modalData, setModalData] = useState({ isModalOpen: false });
@@ -24,6 +25,7 @@ const TreeTest = props => {
       <QuestModal {...{ isModalOpen, onClose, onFinish }}>
         <p>Text</p>
       </QuestModal>
+      <SkillTypesByUserId />
     </React.Fragment>
   );
 };
