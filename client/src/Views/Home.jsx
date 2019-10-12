@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { Menu,Icon, Button, Container } from 'semantic-ui-react';
 import gql from 'graphql-tag';
-import Slider from '../Components/Slider';
 import './style.css';
 
 
@@ -25,8 +24,8 @@ const Home = ({children, toggleDrawer}) => {
   
   return (
     <Container>
-      <Menu>
-        <Menu.Item
+      <Menu inverted>
+        <Button inverted color="blue"
           as={NavLink}
           to="/nodeTree"
           name="quests"
@@ -34,8 +33,8 @@ const Home = ({children, toggleDrawer}) => {
           onClick={() => setActive((activeItem = 'quests'))}
         >
           Wyzwania
-        </Menu.Item>
-        <Menu.Item
+        </Button >
+        <Button inverted color="blue"
           as={NavLink}
           to="/store"
           name="rewards"
@@ -43,12 +42,13 @@ const Home = ({children, toggleDrawer}) => {
           onClick={() => setActive((activeItem = 'rewards'))}
         >
           Nagrody
-        </Menu.Item>
-          <Button icon onClick={(e)=>{toggleDrawer()}} >
+        </Button >
+          <Button icon float='right' inverted color="blue" onClick={(e)=>{toggleDrawer()}} >
             <Icon name='align justify'   />
           </Button>
       </Menu>
       <>
+      
       {children}
       </>
     </Container>

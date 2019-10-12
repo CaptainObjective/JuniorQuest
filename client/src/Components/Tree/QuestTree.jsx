@@ -4,6 +4,8 @@ import { treeBfs } from '../../Utils/tree';
 import theme from './theme.js';
 import { get_skillTypesByUserId } from './SkillTypesByUserId';
 import { useQuery } from '@apollo/react-hooks';
+import Slider from '../Slider';
+
 
 const treeDataInit = [
   {
@@ -110,9 +112,12 @@ const QuestTree = props => {
         <SkillTreeGroup theme={theme}>
           {() => {
             return (
-              <React.Fragment>
-                <SkillTree treeId="basic-birch" title="HTML i CSS" data={tree} handleSave={handleSave} savedData={{}} />
-              </React.Fragment>
+              <div>
+                <Slider />
+                <React.Fragment>
+                  <SkillTree treeId="basic-birch" title="HTML i CSS" data={tree} handleSave={handleSave} savedData={{}} />
+                </React.Fragment>
+              </div>
             );
           }}
         </SkillTreeGroup>

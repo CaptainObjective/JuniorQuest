@@ -20,13 +20,13 @@ const Slider = () => {
     return(
         <>
         <div className = "Slider">
-        <Button icon inverted color="red">
+        <Button icon inverted color="blue">
            <Icon name="left arrow" /> 
         </Button>
         <Button inverted color="blue" >{form.first}</Button>
-        <Button inverted color="violet">{form.second}</Button>
-        <Button inverted color="orange">{form.third}</Button>
-        <Button icon inverted color="yellow">
+        <Button inverted color="blue">{form.second}</Button>
+        <Button inverted color="blue">{form.third}</Button>
+        <Button icon inverted color="blue">
         <Icon name="right arrow" />
         </Button>
         </div>

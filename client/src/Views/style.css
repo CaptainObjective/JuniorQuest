@@ -1,9 +1,7 @@
 .main {
     
-    background-image: url(./bgc7.jpg);
-    backdrop-filter: brightness(60%);
+    background-color: #111;
     height: 100vh;
-    color: black important!;
 }
 
 .Container {
