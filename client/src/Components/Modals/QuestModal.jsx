@@ -17,7 +17,7 @@ const QuestModal = props => {
                 Ukończone
               </Label>
             ) : (
-              <Button positive onClick={props.onFinish}>
+              <Button inverted color="blue" positive onClick={props.onFinish}>
                 Zakończ <Icon name="chevron right" />
               </Button>
             )}
