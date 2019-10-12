@@ -6,8 +6,8 @@ import gql from 'graphql-tag';
 const square = { width: 200, height: 200 };
 
 const buy_item = gql`
-  mutation($where: UserWhereUniqueInput!, $itemID: ID!) {
-    updateUser(where: $where, data: { bought_items: { connect: { id: $itemID } } }) {
+  mutation($where: UserWhereUniqueInput!, $itemID: ID!, $gold: Int, $exp: Int) {
+    updateUser(where: $where, data: { gold: $gold, exp: $exp, bought_items: { connect: { id: $itemID } } }) {
       id
       bought_items {
         id
@@ -17,11 +17,13 @@ const buy_item = gql`
 `;
 
 const ItemToBuy = props => {
-  // console.log(props);
+  console.log(props);
   const [buyItem, { data }] = useMutation(buy_item, {
     variables: {
       where: { id: props.me.id },
       itemID: props.id,
+      gold: props.me.gold - props.price,
+      exp: props.me.exp + 50,
     },
   });
 

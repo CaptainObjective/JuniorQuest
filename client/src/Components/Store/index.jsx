@@ -38,9 +38,12 @@ const get_store_items = gql`
       desctription
       price
       icon
+      price
     }
     me {
       id
+      gold
+      exp
       bought_items {
         id
       }
