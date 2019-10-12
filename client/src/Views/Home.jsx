@@ -47,8 +47,8 @@ const Home = ({children, toggleDrawer}) => {
           Nagrody
         </Button >
         </Menu.Item>
-        <Menu.Item  position='right'>
-          <Button icon floated="right" inverted color="blue" onClick={(e)=>{toggleDrawer()}} >
+        <Menu.Item >
+          <Button icon  inverted color="blue" onClick={(e)=>{toggleDrawer()}} >
             <Icon name='align justify'   />
           </Button>
           </Menu.Item>

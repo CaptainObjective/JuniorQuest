@@ -1,37 +1,38 @@
-import React, {useState} from 'react';
-import {Button, Icon} from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Button, Icon } from 'semantic-ui-react';
 import { RenderPromises } from '@apollo/react-hooks';
 
-const Slider = () => {
+const Slider = props => {
+  const [form, setValues] = useState({
+    first: 'OSIĄGNIĘCIA',
+    second: 'INTEGRACJA',
+    third: 'ZADANIA',
+  });
 
-    const [form, setValues] = useState({
-        first: '',
-        second: '',
-        third: ''
-      });
+  const updateField = e => {
+    setValues({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-      const updateField = e => {
-        setValues({
-          ...form,
-          [e.target.name]: e.target.value
-        });
-      };
-
-    return(
-        <>
-        <div className = "Slider">
-        <Button icon inverted color="blue">
-           <Icon name="left arrow" /> 
+  return (
+    <>
+      <div className="Slider">
+        
+        <Button inverted color="blue" onClick={props.renderTech}>
+          {form.first}
         </Button>
-        <Button inverted color="blue" >{form.first}</Button>
-        <Button inverted color="blue">{form.second}</Button>
-        <Button inverted color="blue">{form.third}</Button>
-        <Button icon inverted color="blue">
-        <Icon name="right arrow" />
+        <Button inverted color="blue" onClick={props.renderTask}>
+          {form.second}
         </Button>
-        </div>
-        </>
-    )
-}
+        <Button inverted color="blue" onClick={props.renderSocial}>
+          {form.third}
+        </Button>
+     
+      </div>
+    </>
+  );
+};
 
 export default Slider;

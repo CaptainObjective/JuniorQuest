@@ -67,16 +67,33 @@ const Hoc = props => {
   const { data, loading, error } = useQuery(get_skillTypesByUserId);
   if (loading) return <p>Loading...</p>;
   if (error) return `Error! ${error.message}`;
-  return <QuestTree {...props} data={data} />;
+  console.log(data);
+  return <QuestTree {...props} data={data.skillTypes.map(x => [tooltipFix({ ...x })])} />;
 };
 
 const QuestTree = props => {
-  const [tree, setTree] = useState([tooltipFix({ ...props.data.skillTypes[0] })]);
-  // useEffect(() => {
-  //   console.log(data);
-  //   if (data) setTree([tooltipFix({ ...data.skillTypes[0] })]);
-  // }, []);
-  // console.log(tree);
+  const [techData, socData, taskData] = props.data;
+  techData.TreeId = 'Kurs Reacta';
+  socData.TreeId = 'Dowiedz się o firmie';
+  taskData.TreeId = 'Twoje zadania';
+
+  const [tree, setTree] = useState(techData);
+
+  const renderTech = () => {
+    const data = JSON.parse(localStorage.getItem(techData.TreeId)) || techData;
+    setTree(data);
+  };
+  const renderSocial = () => {
+    const data = JSON.parse(localStorage.getItem(socData.TreeId)) || socData;
+    setTree(data);
+  };
+  const renderTask = () => {
+    const data = JSON.parse(localStorage.getItem(taskData.TreeId)) || taskData;
+    setTree(data);
+  };
+
+  console.log(tree);
+
   const onSelected = node => {
     props.onNodeSelection(node);
   };
@@ -102,7 +119,9 @@ const QuestTree = props => {
   };
 
   const handleSave = (storage, treeId, skills) => {
-    setTree(skillsToTree(skills));
+    const treeTmp = skillsToTree(skills);
+    setTree(treeTmp);
+    localStorage.setItem(treeId, JSON.stringify(treeTmp));
   };
 
   return (
@@ -112,11 +131,11 @@ const QuestTree = props => {
           {() => {
             return (
               <div>
-                <Slider />
+                <Slider {...{ renderTech, renderSocial, renderTask }} />
                 <React.Fragment>
                   <SkillTree
-                    treeId="basic-birch"
-                    title="HTML i CSS"
+                    treeId={tree[0].TreeId}
+                    title={tree[0].TreeId}
                     data={tree}
                     handleSave={handleSave}
                     savedData={{}}
