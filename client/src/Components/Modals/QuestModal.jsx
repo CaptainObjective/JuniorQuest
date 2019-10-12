@@ -12,7 +12,7 @@ const QuestModal = props => {
           </Grid.Row>
           <Grid.Row centered={true}>
             {props.finished ? (
-              <Label positive>
+              <Label>
                 <Icon name="thumbs up" />
                 Ukończone
               </Label>
