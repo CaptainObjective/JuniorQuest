@@ -6,7 +6,9 @@ type User {
   role: Role! @default(value: JUNIOR)
   mentor: User @relation(name: "MentorRelation")
   juniors: [User]! @relation(name: "JuniorRelation")
-  bought_items: [StoreItem]! 
+  bought_items: [StoreItem]!
+  gold: Int! @default(value: 0)
+  exp: Int! @default(value: 0)
 }
 type SkillType {
   id: ID! @id

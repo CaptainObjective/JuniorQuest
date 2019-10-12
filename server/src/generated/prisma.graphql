@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/marcin-wos-8d1ccd/juniorquest/dev
-# timestamp: Sat Oct 12 2019 02:22:29 GMT+0200 (GMT+02:00)
+# timestamp: Sat Oct 12 2019 02:44:52 GMT+0200 (GMT+02:00)
 
 type AggregateSkillType {
   count: Int!
@@ -1604,6 +1604,8 @@ type User implements Node {
   mentor: User
   juniors(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   bought_items(where: StoreItemWhereInput, orderBy: StoreItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StoreItem!]
+  gold: Int!
+  exp: Int!
 }
 
 """A connection to a list of items."""
@@ -1622,6 +1624,8 @@ input UserCreateInput {
   password: String!
   fullName: String!
   role: Role
+  gold: Int
+  exp: Int
   mentor: UserCreateOneInput
   juniors: UserCreateManyInput
   bought_items: StoreItemCreateManyInput
@@ -1657,6 +1661,10 @@ enum UserOrderByInput {
   fullName_DESC
   role_ASC
   role_DESC
+  gold_ASC
+  gold_DESC
+  exp_ASC
+  exp_DESC
 }
 
 type UserPreviousValues {
@@ -1665,6 +1673,8 @@ type UserPreviousValues {
   password: String!
   fullName: String!
   role: Role!
+  gold: Int!
+  exp: Int!
 }
 
 input UserScalarWhereInput {
@@ -1846,6 +1856,50 @@ input UserScalarWhereInput {
 
   """All values that are not contained in given list."""
   role_not_in: [Role!]
+  gold: Int
+
+  """All values that are not equal to given value."""
+  gold_not: Int
+
+  """All values that are contained in given list."""
+  gold_in: [Int!]
+
+  """All values that are not contained in given list."""
+  gold_not_in: [Int!]
+
+  """All values less than the given value."""
+  gold_lt: Int
+
+  """All values less than or equal the given value."""
+  gold_lte: Int
+
+  """All values greater than the given value."""
+  gold_gt: Int
+
+  """All values greater than or equal the given value."""
+  gold_gte: Int
+  exp: Int
+
+  """All values that are not equal to given value."""
+  exp_not: Int
+
+  """All values that are contained in given list."""
+  exp_in: [Int!]
+
+  """All values that are not contained in given list."""
+  exp_not_in: [Int!]
+
+  """All values less than the given value."""
+  exp_lt: Int
+
+  """All values less than or equal the given value."""
+  exp_lte: Int
+
+  """All values greater than the given value."""
+  exp_gt: Int
+
+  """All values greater than or equal the given value."""
+  exp_gte: Int
 }
 
 type UserSubscriptionPayload {
@@ -1890,6 +1944,8 @@ input UserUpdateDataInput {
   password: String
   fullName: String
   role: Role
+  gold: Int
+  exp: Int
   mentor: UserUpdateOneInput
   juniors: UserUpdateManyInput
   bought_items: StoreItemUpdateManyInput
@@ -1900,6 +1956,8 @@ input UserUpdateInput {
   password: String
   fullName: String
   role: Role
+  gold: Int
+  exp: Int
   mentor: UserUpdateOneInput
   juniors: UserUpdateManyInput
   bought_items: StoreItemUpdateManyInput
@@ -1910,6 +1968,8 @@ input UserUpdateManyDataInput {
   password: String
   fullName: String
   role: Role
+  gold: Int
+  exp: Int
 }
 
 input UserUpdateManyInput {
@@ -1929,6 +1989,8 @@ input UserUpdateManyMutationInput {
   password: String
   fullName: String
   role: Role
+  gold: Int
+  exp: Int
 }
 
 input UserUpdateManyWithWhereNestedInput {
@@ -2140,6 +2202,50 @@ input UserWhereInput {
 
   """All values that are not contained in given list."""
   role_not_in: [Role!]
+  gold: Int
+
+  """All values that are not equal to given value."""
+  gold_not: Int
+
+  """All values that are contained in given list."""
+  gold_in: [Int!]
+
+  """All values that are not contained in given list."""
+  gold_not_in: [Int!]
+
+  """All values less than the given value."""
+  gold_lt: Int
+
+  """All values less than or equal the given value."""
+  gold_lte: Int
+
+  """All values greater than the given value."""
+  gold_gt: Int
+
+  """All values greater than or equal the given value."""
+  gold_gte: Int
+  exp: Int
+
+  """All values that are not equal to given value."""
+  exp_not: Int
+
+  """All values that are contained in given list."""
+  exp_in: [Int!]
+
+  """All values that are not contained in given list."""
+  exp_not_in: [Int!]
+
+  """All values less than the given value."""
+  exp_lt: Int
+
+  """All values less than or equal the given value."""
+  exp_lte: Int
+
+  """All values greater than the given value."""
+  exp_gt: Int
+
+  """All values greater than or equal the given value."""
+  exp_gte: Int
   mentor: UserWhereInput
   juniors_every: UserWhereInput
   juniors_some: UserWhereInput
