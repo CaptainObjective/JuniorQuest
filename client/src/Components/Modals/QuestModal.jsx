@@ -8,7 +8,7 @@ const QuestModal = props => {
       <Modal.Content scrolling>
         <Grid>
           <Grid.Row>
-            <Grid.Column>{props.children}</Grid.Column>
+            <Grid.Column centered={true}>{props.children}</Grid.Column>
           </Grid.Row>
           <Grid.Row centered={true}>
             {props.finished ? (
