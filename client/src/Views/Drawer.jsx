@@ -8,20 +8,16 @@ class Drawer extends React.Component {
   handleShowClick = () => this.setState({ visible: true })
   handleSidebarHide = () => this.setState({ visible: false })
 
-  componentDidMount () {
-      console.log("Drawer children:")
-      console.log(this.props.children)
-  }
+  // componentDidMount () {
+  //     console.log("Drawer props:")
+  //     console.log(this.props)
+  // }
 
   render() {
-    const { visible } = this.state
+    // const { visible } = this.state
 
     return (
         <>
-            {/* <Button icon>
-                <Icon name='align justify' disabled={visible} onClick={this.handleShowClick} />
-            </Button> */}
-
         <Sidebar.Pushable as={Segment}>
           <Sidebar
             as={Menu}
@@ -37,16 +33,16 @@ class Drawer extends React.Component {
               Avatar {this.props.avatar}
           </Menu.Item>
             <Menu.Item>
-              Email:  {this.props.email}
+              Email:  {this.props.props.email}
             </Menu.Item>
             <Menu.Item>
-              Name: {this.props.name}
+              Name: {this.props.props.fullName}
             </Menu.Item>
             <Menu.Item>
-              Mentor: {this.props.mentor}
+              Mentor: {this.props.props.mentor? this.props.props.mentor.fullName: ''}
             </Menu.Item>
             <Menu.Item>
-              Gold: {this.props.gold}
+              Gold: {this.props.props.gold}
             </Menu.Item>
             <Menu.Item>
               Level: {this.props.level}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Header, Label, Segment } from 'semantic-ui-react';
+import { Button, Header, Label, Segment, Popup } from 'semantic-ui-react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
@@ -35,21 +35,32 @@ const ItemToBuy = props => {
   };
 
   return (
-    <div style={{display: 'inline-block'}}>
-      <Segment circular style={square}>
-        <Header as="h4">
-          <Header.Subheader><img src={props.icon} alt='ikona zadania' style={{maxWidth: '75px'}} /></Header.Subheader>
-          {props.name}
-          <Header.Subheader>
-            <Button as="div" labelPosition="right" onClick={onButtonClick}>
-              <Button icon>{state.message}</Button>
-              <Label as="div" basic pointing="left">
-                {props.price}
-              </Label>
-            </Button>
-          </Header.Subheader>
-        </Header>
-      </Segment>
+    <div style={{ display: 'inline-block' }}>
+      <Popup
+        content={props.desctription}
+        key={props.name}
+        header={props.name}
+        inverted
+        position="right center"
+        trigger={
+          <Segment circular style={square}>
+            <Header as="h4">
+              <Header.Subheader>
+                <img src={props.icon} alt="ikona zadania" style={{ maxWidth: '75px' }} />
+              </Header.Subheader>
+              {props.name}
+              <Header.Subheader>
+                <Button as="div" labelPosition="right" onClick={onButtonClick}>
+                  <Button icon>{state.message}</Button>
+                  <Label as="div" basic pointing="left">
+                    {props.price}
+                  </Label>
+                </Button>
+              </Header.Subheader>
+            </Header>
+          </Segment>
+        }
+      />
     </div>
   );
 };

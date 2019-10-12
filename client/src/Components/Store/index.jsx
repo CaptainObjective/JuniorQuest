@@ -6,30 +6,6 @@ import gql from 'graphql-tag';
 import ToBuy from './toBuy';
 import Bought from './bought';
 
-export const items = [
-  {
-    name: '15 minut dłuższa przerwa',
-    icon: '🍉',
-    description: '',
-    price: 100,
-    bought: false,
-  },
-  {
-    name: '1 dzień wolny',
-    icon: '😃',
-    description: '',
-    price: 1000,
-    bought: false,
-  },
-  {
-    name: 'Darmowa pizza',
-    icon: '🍕',
-    description: '',
-    price: 200,
-    bought: true,
-  },
-];
-
 const get_store_items = gql`
   {
     storeItems {
@@ -69,10 +45,14 @@ const Store = () => {
 
   data.storeItems = data.storeItems.map(el => ({ ...el, bought: data.me.bought_items.some(({ id }) => id === el.id) }));
   return (
-    <div className="container">
-      <Segment style={{display: 'flex'}}>
-        <Button style={{width: '40%', margin: '0 auto' }} onClick={showToBuyBox}>Do kupienia</Button>
-        <Button style={{width: '40%', margin: '0 auto' }} onClick={showBoughtBox}>Kupione</Button>
+    <div style={{ minHeight: '50vh' }} className="container">
+      <Segment style={{ display: 'flex' }}>
+        <Button style={{ width: '40%', margin: '0 auto' }} onClick={showToBuyBox}>
+          Do kupienia
+        </Button>
+        <Button style={{ width: '40%', margin: '0 auto' }} onClick={showBoughtBox}>
+          Kupione
+        </Button>
       </Segment>
       <Segment>
         {state.toBuyView && <ToBuy me={data.me} items={data.storeItems} />}
