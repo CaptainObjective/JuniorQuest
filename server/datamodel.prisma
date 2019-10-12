@@ -9,6 +9,7 @@ type User {
   bought_items: [StoreItem]!
   gold: Int! @default(value: 0)
   exp: Int! @default(value: 0)
+  icon: String
 }
 type SkillType {
   id: ID! @id
@@ -22,7 +23,8 @@ type SkillType {
   mentor_complete: Boolean @default(value: false)
   gold: Int @default(value: 0)
   type: TaskType!
-  Tooltip: Tooltip!
+  tooltip: Tooltip!
+  finished: Boolean! @default(value: false)
 }
 type Tooltip {
     id: ID! @id

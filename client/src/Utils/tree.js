@@ -4,6 +4,7 @@ const treeBfs = (tree, cb) => {
   while (queue.length) {
     const node = queue.shift();
     cb(node);
+    if (!node.children) node.children = [];
     for (const item of node.children) {
       if (!visited.has(item)) {
         queue.push(item);
