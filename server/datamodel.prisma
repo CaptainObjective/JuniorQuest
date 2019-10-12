@@ -3,10 +3,10 @@ type User {
   email: String! @unique
   password: String!
   fullName: String!
-  type: Role! @default(value: JUNIOR)
+  role: Role! @default(value: JUNIOR)
   mentor: User @relation(name: "MentorRelation")
-  juniors: [User!]! @relation(name: "JuniorRelation")
-  bought_items: [StoreItem!]! 
+  juniors: [User]! @relation(name: "JuniorRelation")
+  bought_items: [StoreItem]! 
 }
 
 type SkillType {
@@ -14,8 +14,8 @@ type SkillType {
   title: String!
   description: String
   user: User @relation(name: "JuniorRelation")
-  children: [SkillType!]! @relation(name: "ChildrenRelation")
-  parent: SkillType! @relation(name: "ParentRelation")
+  children: [SkillType]! @relation(name: "ChildrenRelation")
+  parent: SkillType @relation(name: "ParentRelation")
   icon: String
   junior_complete: Boolean @default(value: false)
   mentor_complete: Boolean @default(value: false)
