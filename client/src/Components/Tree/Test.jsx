@@ -2,6 +2,17 @@ import React, { useState } from 'react';
 import QuestTree from './QuestTree';
 import QuestModal from '../Modals/QuestModal';
 import { Icon } from 'semantic-ui-react';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import { me } from '../../App';
+
+const add_gold = gql`
+  mutation addGold($where: UserWhereUniqueInput!, $goldToAdd: Int!) {
+    addGold(where: $where, goldToAdd: $goldToAdd) {
+      gold
+    }
+  }
+`;
 
 const baseVideo = (
   <iframe
@@ -15,6 +26,7 @@ const baseVideo = (
 );
 
 const TreeTest = props => {
+  const [addGold] = useMutation(add_gold);
   const [modalData, setModalData] = useState({ isModalOpen: false });
   const { isModalOpen, node } = modalData;
   const onClose = () => {
@@ -23,6 +35,13 @@ const TreeTest = props => {
   };
   const onFinish = () => {
     setModalData({ isModalOpen: false });
+    addGold({
+      variables: {
+        where: { id: 'ck1mibvtbxu450908dz4a8pdy' },
+        goldToAdd: node.gold,
+      },
+      refetchQueries: () => [{ query: me }],
+    });
     console.log('Success');
   };
 
