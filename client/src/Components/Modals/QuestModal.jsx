@@ -18,7 +18,7 @@ const QuestModal = props => {
               </Label>
             ) : (
               <Button inverted color="blue" positive onClick={props.onFinish}>
-                Zakończ <Icon name="chevron right" />
+                Zatwierdź <Icon name="chevron right" />
               </Button>
             )}
           </Grid.Row>
