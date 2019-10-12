@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SkillProvider, SkillTreeGroup, SkillTree } from 'beautiful-skill-tree';
 import { treeBfs } from '../../Utils/tree';
+import { get_skillTypesByUserId } from './SkillTypesByUserId';
+import { useQuery } from '@apollo/react-hooks';
 
 const treeDataInit = [
   {
@@ -51,8 +53,24 @@ const skillsToArray = skills => {
   return arr;
 };
 
+const tooltipFix = data => {
+  treeBfs(data, x => (x['tooltip'] = x.Tooltip));
+  return data;
+};
+
+const Hoc = props => {
+  const { data, loading, error } = useQuery(get_skillTypesByUserId);
+  if (loading) return <p>Loading...</p>;
+  if (error) return `Error! ${error.message}`;
+  return <QuestTree {...props} data={data} />;
+};
+
 const QuestTree = props => {
-  const [tree, setTree] = useState(treeDataInit);
+  const [tree, setTree] = useState([tooltipFix({ ...props.data.skillTypes[0] })]);
+  // useEffect(() => {
+  //   console.log(data);
+  //   if (data) setTree([tooltipFix({ ...data.skillTypes[0] })]);
+  // }, []);
 
   const onSelected = node => {
     props.onNodeSelection(node);
@@ -99,4 +117,4 @@ const QuestTree = props => {
   );
 };
 
-export default QuestTree;
+export default Hoc;
