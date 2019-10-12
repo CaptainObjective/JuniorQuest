@@ -122,6 +122,7 @@ const QuestTree = props => {
     const treeTmp = skillsToTree(skills);
     setTree(treeTmp);
     localStorage.setItem(treeId, JSON.stringify(treeTmp));
+    document.querySelector('div.Tree p').hidden = true;
   };
 
   return (

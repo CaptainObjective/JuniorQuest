@@ -18,7 +18,7 @@ const baseVideo = [
   <iframe
     width="560"
     height="315"
-    title='video1'
+    title="video1"
     src="https://www.youtube.com/embed/sBws8MSXN7A"
     frameborder="0"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -27,7 +27,7 @@ const baseVideo = [
   <iframe
     width="560"
     height="315"
-    title='video2'
+    title="video2"
     src="https://www.youtube.com/embed/k7h-kr6FPbc"
     frameborder="0"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -36,12 +36,12 @@ const baseVideo = [
   <iframe
     width="560"
     height="315"
-    title='video3'
+    title="video3"
     src="https://www.youtube.com/embed/DLX62G4lc44"
     frameborder="0"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen
-  ></iframe>
+  ></iframe>,
 ];
 
 const TreeTest = props => {
@@ -73,7 +73,9 @@ const TreeTest = props => {
       />
       {node && (
         <QuestModal {...{ isModalOpen, onClose, onFinish, header: node.title }}>
-          <div style={{ textAlign: 'center', marginBottom: '2%' }}>{node.content || baseVideo[Math.floor(Math.random()*3)]}</div>
+          <div style={{ textAlign: 'center', marginBottom: '2%' }}>
+            {node.content || baseVideo[Math.floor(Math.random() * 3)]}
+          </div>
           <div style={{ textAlign: 'left' }}>
             <p>{node.description}</p>
           </div>
