@@ -7,6 +7,11 @@ const Mutation = {
     return StoreItem;
   },
 
+  updateUser: async (parent, args, ctx, info) => {
+    const StoreItem = await ctx.prisma.mutation.updateUser(args, info);
+    return StoreItem;
+  },
+
   signUp: async (parent, args, ctx, info) => {
     // eslint-disable-next-line require-atomic-updates
     args.data.password = await bcrypt.hash(args.data.password, 10);
