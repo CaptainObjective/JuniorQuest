@@ -35,9 +35,9 @@ const LoginForm = () => {
 
   return (
     <Container>
-      <Segment>
+      <Segment className="segment-blur">
         <Image src={src1} size='medium' centered />
-        <Header as="h2">Logowanie</Header>        
+        <Header inverted as="h2">Logowanie</Header>        
         {/* {this.state.invalidData && <NegativeMessage header="Błędny email lub hasło" />} */}
         <Form onSubmit={onFormSubmit}>
           <Form.Input
@@ -55,7 +55,7 @@ const LoginForm = () => {
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
-          <Button type="submit" style={{display: 'block', margin: '0 auto'}} onClick={onFormSubmit}>Zaloguj!</Button>
+          <Button inverted color='blue' size='massive' type="submit" style={{display: 'block', margin: '0 auto'}} onClick={onFormSubmit}>Zaloguj!</Button>
         </Form>
       </Segment>
     </Container>
