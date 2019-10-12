@@ -1,11 +1,11 @@
 .main {
-    
+    background-image: url('./bgc7.jpg') !important;
     background-color: #111;
     height: 100vh;
 }
 
 .Container {
-   background-color: rgba(0,0,0,0.4);
+   background-color: rgba(0,0,0,0.5) !important;
    backdrop-filter: blur(10px);
     width:60%;
     height: 100%;
@@ -13,6 +13,10 @@
     justify-content: center;
     margin: 0 auto;
     margin-top: 20px;
+}
+
+.segment {
+    background-color: rgba(0,0,0,0.0) !important;
 }
 
 .ui.segment-blur {

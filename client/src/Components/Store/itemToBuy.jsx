@@ -3,7 +3,7 @@ import { Button, Header, Label, Segment, Popup } from 'semantic-ui-react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-const square = { width: 200, height: 200 };
+const square = { width: 200, height: 200, border: '3px solid #54c8ff' };
 
 const buy_item = gql`
   mutation($where: UserWhereUniqueInput!, $itemID: ID!, $gold: Int, $exp: Int) {
@@ -43,15 +43,15 @@ const ItemToBuy = props => {
         inverted
         position="right center"
         trigger={
-          <Segment circular style={square}>
+          <Segment inverted circular style={square}>
             <Header as="h4">
               <Header.Subheader>
                 <img src={props.icon} alt="ikona zadania" style={{ maxWidth: '75px' }} />
               </Header.Subheader>
               {props.name}
               <Header.Subheader>
-                <Button as="div" labelPosition="right" onClick={onButtonClick}>
-                  <Button icon>{state.message}</Button>
+                <Button as="div" labelPosition="right" onClick={onButtonClick} color="blue" name="quests">
+                  <Button icon color="blue" name="quests">{state.message}</Button>
                   <Label as="div" basic pointing="left">
                     {props.price}
                   </Label>

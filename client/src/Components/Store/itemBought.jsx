@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header, Segment, Popup } from 'semantic-ui-react';
 
-const square = { width: 200, height: 200 };
+const square = { width: 200, height: 200, border: '3px solid #54c8ff'};
 
 const ItemBought = props => {
   return (
@@ -13,7 +13,7 @@ const ItemBought = props => {
         inverted
         position="right center"
         trigger={
-          <Segment circular style={square}>
+          <Segment inverted circular style={square}>
             <Header as="h4">
               <Header.Subheader>
                 <img src={props.icon} alt="ikona zadania" style={{ maxWidth: '75px' }} />
