@@ -51,8 +51,8 @@ const ItemToBuy = props => {
               {props.name}
               <Header.Subheader>
                 <Button as="div" labelPosition="right" onClick={onButtonClick} color="blue" name="quests">
-                  <Button icon color="blue" name="quests">{state.message}</Button>
-                  <Label as="div" basic pointing="left">
+                  <Button icon inverted color="blue" name="quests">{state.message}</Button>
+                  <Label as="div" inverted basic pointing="left">
                     {props.price}
                   </Label>
                 </Button>
