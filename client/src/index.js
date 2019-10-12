@@ -10,9 +10,7 @@ import apollo from './apollo';
 ReactDOM.render(
   <ApolloProvider client={apollo}>
     <BrowserRouter>
-
-        <App />
-
+      <App />
     </BrowserRouter>
   </ApolloProvider>,
   document.getElementById('root'),

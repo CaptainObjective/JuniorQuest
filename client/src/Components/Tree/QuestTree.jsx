@@ -71,7 +71,7 @@ const QuestTree = props => {
   //   console.log(data);
   //   if (data) setTree([tooltipFix({ ...data.skillTypes[0] })]);
   // }, []);
-
+  console.log(tree);
   const onSelected = node => {
     props.onNodeSelection(node);
   };

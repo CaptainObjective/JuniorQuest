@@ -9,7 +9,7 @@ type User {
   bought_items: [StoreItem]!
   gold: Int! @default(value: 0)
   exp: Int! @default(value: 0)
-  icon: String
+  icon: String! @default(value: "")
 }
 type SkillType {
   id: ID! @id

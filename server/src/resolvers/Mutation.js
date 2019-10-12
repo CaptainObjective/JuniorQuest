@@ -14,6 +14,14 @@ const Mutation = {
     const StoreItem = await ctx.prisma.mutation.updateUser(args, info);
     return StoreItem;
   },
+  addGold: async (parent, args, ctx, info) => {
+    const user = await ctx.prisma.query.user(args, '{ id password gold }');
+    const updatedUser = await ctx.prisma.mutation.updateUser(
+      { where: { id: user.id }, data: { gold: user.gold + args.goldToAdd } },
+      info,
+    );
+    return updatedUser;
+  },
 
   signUp: async (parent, args, ctx, info) => {
     // eslint-disable-next-line require-atomic-updates

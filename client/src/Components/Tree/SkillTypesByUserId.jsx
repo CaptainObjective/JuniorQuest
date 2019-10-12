@@ -43,6 +43,32 @@ export const get_skillTypesByUserId = gql`
             direction
           }
         }
+        children {
+          id
+          title
+          description
+          icon
+          gold
+          type
+          Tooltip {
+            id
+            content
+            direction
+          }
+        }
+        children {
+          id
+          title
+          description
+          icon
+          gold
+          type
+          Tooltip {
+            id
+            content
+            direction
+          }
+        }
       }
     }
   }
