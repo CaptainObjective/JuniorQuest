@@ -31,7 +31,19 @@ type Query {
     last: Int
   ): [User]!
   me: User
+
+  skillTypes(
+    where: SkillTypeWhereInput
+    orderBy: SkillTypeOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [SkillType]!
+
 }
+
 type Message {
   message: String!
 }
