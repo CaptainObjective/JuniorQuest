@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Form, Segment, Header, TextArea } from 'semantic-ui-react';
 import { SkillTreeGroup, SkillTree, SkillProvider } from 'beautiful-skill-tree';
-import { posix } from 'path';
+import { treeBfs } from '../../Utils/tree.js'
+
 
 const dataInit = [
   {
@@ -19,7 +20,53 @@ const dataInit = [
         tooltip: {
           description: 'Node 2',
         },
+        children: []
+      },
+      {
+        id: 'node3',
+        title: 'Node 3',
+        nodeState: 'selected',
+        tooltip: {
+          description: 'Node 3',
+        },
         children: [],
+      },
+    ],
+  },
+];
+const dataInit2 = [
+  {
+    id: 'node1',
+    title: 'Node 1',
+    nodeState: 'selected',
+    tooltip: {
+      description: 'Node 1',
+    },
+    children: [
+      {
+        id: 'node2',
+        title: 'Node 2',
+        nodeState: 'selected',
+        tooltip: {
+          description: 'Node 2',
+        },
+        children: [{
+          id: 'node4',
+          title: 'Node 2',
+          nodeState: 'selected',
+          tooltip: {
+            description: 'Node 2',
+          },
+          children: [],
+        },{
+          id: 'node5',
+          title: 'Node 2',
+          nodeState: 'selected',
+          tooltip: {
+            description: 'Node 2',
+          },
+          children: [],
+        },],
       },
       {
         id: 'node3',
@@ -38,23 +85,31 @@ const CreateQuest = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [data, setData] = useState(dataInit);
-
-  data[0].children[0].tooltip.content = (<Button onClick={() => {
-    const newData = [...data];
-    newData[0].children[0].children.push({
-      id: 'node4',
-      title: title,
-      nodeState: 'selected',
-      tooltip: {
-        description: description,
-      },
-      children: [],
-    });
-    setData(newData)
-  }}/>);
+  const [hack, setHack] = useState(Math.random())
+  treeBfs(data[0], (x) => {
+    x.tooltip.content = (<Button onClick={() => {
+      const newData = [...data];
+      let node = null;
+      treeBfs(newData[0],(y) => { if(y.id === x.id) { node = y }})
+      const newNode = {
+        id: title,
+        title: title,
+        nodeState: 'selected',
+        tooltip: {
+          description: description,
+        },
+        children: [],
+      };
+      node.children.push(newNode);
+      console.log(newData);
+      setData(newData);
+      // setHack(Math.random());
+    }}/>);
+  }); 
 
   function handleSave(storage, treeId, skills) {
     console.log(skills);
+    setHack(Math.random());
   }
 
   const onFormSubmit = e => {
@@ -91,19 +146,18 @@ const CreateQuest = () => {
         />
       </Form>
     </Segment>
-
-      <SkillProvider>
-        <SkillTreeGroup>
-          {() => {
-            return (
-              <React.Fragment>
-                <SkillTree treeId="basic-birch" title="HTML i CSS" data={data} handleSave={handleSave} savedData={{"node1":{"nodeState":"selected"},"node2":{"nodeState":"selected"},"node3":{"nodeState":"selected"}}} />
-              </React.Fragment>
-            );
-          }}
-        </SkillTreeGroup>
-      </SkillProvider>
-
+  <div style={{color: 'white'}}>{hack}
+<SkillProvider>
+    <SkillTreeGroup>
+      {() => {
+        return (
+          <React.Fragment>
+            <SkillTree treeId="basic-birch" title="HTML i CSS" data={data} handleSave={handleSave} savedData={{"node1":{"nodeState":"selected"},"node2":{"nodeState":"selected"},"node3":{"nodeState":"selected"}}} />
+          </React.Fragment>
+        );
+      }}
+    </SkillTreeGroup>
+  </SkillProvider></div>
       <Button type="submit" style={{display: 'block', margin: '0 auto'}} onClick={onFormSubmit}>Quest gotowy!</Button>
     </div>
   );

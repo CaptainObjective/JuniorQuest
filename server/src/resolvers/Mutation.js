@@ -6,6 +6,14 @@ const Mutation = {
     const StoreItem = await ctx.prisma.mutation.updateStoreItem(args, info);
     return StoreItem;
   },
+  updateSkillType: async (parent, args, ctx, info) => {
+    const SkillType = await ctx.prisma.mutation.updateSkillType(args, info);
+    return SkillType;
+  },
+  updateUser: async (parent, args, ctx, info) => {
+    const StoreItem = await ctx.prisma.mutation.updateUser(args, info);
+    return StoreItem;
+  },
 
   signUp: async (parent, args, ctx, info) => {
     // eslint-disable-next-line require-atomic-updates
