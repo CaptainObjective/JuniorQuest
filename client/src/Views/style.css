@@ -1,14 +1,29 @@
-
+.main{
+    
+    background-image: url(./bgc7.jpg);
+    backdrop-filter: brightness(60%);
+    height: 100vh;
+    color: black important!;
+}
 
 .Container {
-    background-image: url(./bgc.jpg);
-    width:100%;
+   background-color: rgba(0,0,0,0.4);
+   backdrop-filter: blur(10px);
+    width:60%;
     height: 100%;
     display: flex;
     justify-content: center;
-
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
+.line {
+    width:5px;
+}
+
+.line1 {
+    width:15px;
+}
 .mainStuff {
     width:60%;
     height:90%;

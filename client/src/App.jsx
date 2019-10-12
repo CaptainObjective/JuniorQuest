@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import gql from 'graphql-tag';
-
+import './Views/style.css';
 import Home from './Views/Home';
 import Login from './Views/Login';
 import Store from './Views/Store';
@@ -19,6 +19,8 @@ export const me = gql`
 const App = () => {
   const { data, loading, error } = useQuery(me);
 
+ 
+  
   if (loading) return <p>Loading...</p>;
   if (error) return `Error! ${error.message}`;
 

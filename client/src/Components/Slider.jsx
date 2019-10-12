@@ -5,9 +5,9 @@ import { RenderPromises } from '@apollo/react-hooks';
 const Slider = () => {
 
     const [form, setValues] = useState({
-        first: 'rew',
-        second: 'rewq',
-        third: 'rewq'
+        first: '',
+        second: '',
+        third: ''
       });
 
       const updateField = e => {
@@ -23,10 +23,10 @@ const Slider = () => {
         <Button icon inverted color="red">
            <Icon name="left arrow" /> 
         </Button>
-        <Button inverted color="red" >{form.first}</Button>
-        <Button inverted color="red">{form.second}</Button>
-        <Button inverted color="red">{form.third}</Button>
-        <Button icon inverted color="red">
+        <Button inverted color="blue" >{form.first}</Button>
+        <Button inverted color="violet">{form.second}</Button>
+        <Button inverted color="orange">{form.third}</Button>
+        <Button icon inverted color="yellow">
         <Icon name="right arrow" />
         </Button>
         </div>

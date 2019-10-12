@@ -26,8 +26,8 @@ const Home = () => {
   return (
     <>
     <div className = "navbar">
-      <Menu inverted>
-        <Menu.Item 
+      <Menu inverted secondary>
+        <Menu.Item color = "blue"
           as={NavLink}
           to="/"
           name="quests"
@@ -36,7 +36,8 @@ const Home = () => {
         >
           Quests
         </Menu.Item >
-        <Menu.Item color = "red" 
+  
+        <Menu.Item color = "blue" 
           as={NavLink}
           to="/"
           name="rewards"
