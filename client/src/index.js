@@ -11,9 +11,9 @@ ReactDOM.render(
   <ApolloProvider client={apollo}>
     <BrowserRouter>
     <div className="main">
-      <Container>
+
         <App />
-      </Container>
+    
       </div>
     </BrowserRouter>
   </ApolloProvider>,
