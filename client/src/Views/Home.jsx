@@ -24,7 +24,8 @@ const Home = ({children, toggleDrawer}) => {
   
   return (
     <Container>
-      <Menu inverted>
+      <Menu inverted style={{backgroundColor: "rgba(255,255,255,0.1)"}}>
+      <Menu.Item>
         <Button inverted color="blue"
           as={NavLink}
           to="/nodeTree"
@@ -34,6 +35,8 @@ const Home = ({children, toggleDrawer}) => {
         >
           Wyzwania
         </Button >
+        </Menu.Item>
+        <Menu.Item>
         <Button inverted color="blue"
           as={NavLink}
           to="/store"
@@ -43,9 +46,12 @@ const Home = ({children, toggleDrawer}) => {
         >
           Nagrody
         </Button >
-          <Button icon float='right' inverted color="blue" onClick={(e)=>{toggleDrawer()}} >
+        </Menu.Item>
+        <Menu.Item  position='right'>
+          <Button icon floated="right" inverted color="blue" onClick={(e)=>{toggleDrawer()}} >
             <Icon name='align justify'   />
           </Button>
+          </Menu.Item>
       </Menu>
       <>
       

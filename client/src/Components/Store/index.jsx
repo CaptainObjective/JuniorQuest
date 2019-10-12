@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button, Segment } from 'semantic-ui-react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import { NavLink } from 'react-router-dom';
+
 
 import ToBuy from './toBuy';
 import Bought from './bought';
@@ -47,10 +49,13 @@ const Store = () => {
   return (
     <div style={{ minHeight: '50vh' }} className="container">
       <Segment style={{ display: 'flex' }}>
-        <Button style={{ width: '40%', margin: '0 auto' }} onClick={showToBuyBox}>
+        <Button style={{ width: '40%', margin: '0 auto' }} onClick={showToBuyBox} inverted color="blue"
+          name="quests"
+          >
           Do kupienia
         </Button>
-        <Button style={{ width: '40%', margin: '0 auto' }} onClick={showBoughtBox}>
+        <Button style={{ width: '40%', margin: '0 auto' }} onClick={showBoughtBox} inverted color="blue"
+          name="quests">
           Kupione
         </Button>
       </Segment>
