@@ -33,20 +33,22 @@ const ItemToBuy = props => {
   };
 
   return (
-    <Segment circular style={square}>
-      <Header as="h4">
-        <Header.Subheader>{props.icon}</Header.Subheader>
-        {props.name}
-        <Header.Subheader>
-          <Button as="div" labelPosition="right" onClick={onButtonClick}>
-            <Button icon>{state.message}</Button>
-            <Label as="div" basic pointing="left">
-              {props.price}
-            </Label>
-          </Button>
-        </Header.Subheader>
-      </Header>
-    </Segment>
+    <div style={{display: 'inline-block'}}>
+      <Segment circular style={square}>
+        <Header as="h4">
+          <Header.Subheader><img src={props.icon} alt='ikona zadania' style={{maxWidth: '75px'}} /></Header.Subheader>
+          {props.name}
+          <Header.Subheader>
+            <Button as="div" labelPosition="right" onClick={onButtonClick}>
+              <Button icon>{state.message}</Button>
+              <Label as="div" basic pointing="left">
+                {props.price}
+              </Label>
+            </Button>
+          </Header.Subheader>
+        </Header>
+      </Segment>
+    </div>
   );
 };
 

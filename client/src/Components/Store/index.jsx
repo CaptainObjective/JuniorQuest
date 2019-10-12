@@ -67,9 +67,9 @@ const Store = () => {
   data.storeItems = data.storeItems.map(el => ({ ...el, bought: data.me.bought_items.some(({ id }) => id === el.id) }));
   return (
     <div className="container">
-      <Segment>
-        <Button onClick={showToBuyBox}>Do kupienia</Button>
-        <Button onClick={showBoughtBox}>Kupione</Button>
+      <Segment style={{display: 'flex'}}>
+        <Button style={{width: '40%', margin: '0 auto' }} onClick={showToBuyBox}>Do kupienia</Button>
+        <Button style={{width: '40%', margin: '0 auto' }} onClick={showBoughtBox}>Kupione</Button>
       </Segment>
       <Segment>
         {state.toBuyView && <ToBuy me={data.me} items={data.storeItems} />}
