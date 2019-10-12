@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SkillProvider, SkillTreeGroup, SkillTree } from 'beautiful-skill-tree';
 import { treeBfs } from '../../Utils/tree';
+import theme from './theme.js';
 import { get_skillTypesByUserId } from './SkillTypesByUserId';
 import { useQuery } from '@apollo/react-hooks';
 
@@ -103,7 +104,7 @@ const QuestTree = props => {
   return (
     <div className="Tree">
       <SkillProvider>
-        <SkillTreeGroup>
+        <SkillTreeGroup theme={theme}>
           {() => {
             return (
               <React.Fragment>

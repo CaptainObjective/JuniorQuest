@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { Menu,Icon, Button, Container } from 'semantic-ui-react';
 import gql from 'graphql-tag';
+import Slider from '../Components/Slider';
+import './style.css';
 
 
 const Get_User = gql`
