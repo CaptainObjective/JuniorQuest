@@ -17,7 +17,7 @@ const buy_item = gql`
 `;
 
 const ItemToBuy = props => {
-  console.log(props);
+  // console.log(props);
   const [buyItem, { data }] = useMutation(buy_item, {
     variables: {
       where: { id: props.me.id },

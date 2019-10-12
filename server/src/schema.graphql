@@ -3,6 +3,7 @@
 type Mutation {
   updateStoreItem(data: StoreItemUpdateInput!, where: StoreItemWhereUniqueInput!): StoreItem
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateSkillType(data: SkillTypeUpdateInput!, where: SkillTypeWhereUniqueInput!): SkillType
 
   signUp(data: UserCreateInput!): User!
   signIn(email: String!, password: String!): User

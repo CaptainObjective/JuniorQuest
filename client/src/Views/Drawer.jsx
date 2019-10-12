@@ -5,12 +5,11 @@ import { Button, Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
 class Drawer extends React.Component {
     state = { visible: false }
 
-  handleHideClick = () => this.setState({ visible: false })
   handleShowClick = () => this.setState({ visible: true })
   handleSidebarHide = () => this.setState({ visible: false })
 
   componentDidMount () {
-      console.log("error")
+      console.log("Drawer children:")
       console.log(this.props.children)
   }
 
@@ -19,8 +18,8 @@ class Drawer extends React.Component {
 
     return (
         <>
-            <Button icon>
-                <Icon name='align justify' disabled={visible} onClick={this.handleShowClick} />
+            <Button icon  onClick={this.handleShowClick}>
+                <Icon name='align justify'   />
             </Button>
 
         <Sidebar.Pushable as={Segment}>
@@ -38,7 +37,10 @@ class Drawer extends React.Component {
               Avatar {this.props.avatar}
           </Menu.Item>
             <Menu.Item>
-              Name {this.props.name}
+              Email:  {this.props.email}
+            </Menu.Item>
+            <Menu.Item>
+              Name: {this.props.name}
             </Menu.Item>
             <Menu.Item>
               Mentor: {this.props.mentor}
