@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import gql from 'graphql-tag';
+import './Views/style.css';
 import Home from './Views/Home';
 import Login from './Views/Login';
 import Store from './Views/Store';
@@ -18,6 +19,7 @@ export const me = gql`
         fullName
       }
       gold
+      exp
     }
   }
 `;
@@ -35,6 +37,8 @@ const App = () => {
   const [logOut] = useMutation(log_out, { refetchQueries: () => [{ query: me }] });
   const [drawer, setDrawer] = useState(false);
 
+ 
+  
   if (loading) return <p>Loading...</p>;
   if (error) return `Error! ${error.message}`;
 

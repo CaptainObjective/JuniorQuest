@@ -1,0 +1,49 @@
+.main {
+    
+    background-image: url(./bgc7.jpg);
+    backdrop-filter: brightness(60%);
+    height: 100vh;
+    color: black important!;
+}
+
+.Container {
+   background-color: rgba(0,0,0,0.4);
+   backdrop-filter: blur(10px);
+    width:60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.ui.segment-blur {
+    background: rgba(0,0,0,0.0) !important;
+    border: none !important;
+}
+
+.ui.form .field>label {
+    color: white !important;
+}
+
+.line {
+    width:5px;
+}
+
+.line1 {
+    width:15px;
+}
+.mainStuff {
+    width:60%;
+    height:90%;
+    margin-top:30px;
+}
+
+.Slider {
+    display:flex;
+    justify-content: center;
+    margin-top:20px;
+}
+
+
+

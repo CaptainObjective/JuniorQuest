@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SkillProvider, SkillTreeGroup, SkillTree } from 'beautiful-skill-tree';
 import { treeBfs } from '../../Utils/tree';
+import theme from './theme.js';
 import { get_skillTypesByUserId } from './SkillTypesByUserId';
 import { useQuery } from '@apollo/react-hooks';
 
@@ -54,7 +55,10 @@ const skillsToArray = skills => {
 };
 
 const tooltipFix = data => {
-  treeBfs(data, x => (x['tooltip'] = x.Tooltip));
+  treeBfs(data, x => {
+    x['tooltip'] = x.Tooltip;
+    x['tooltip'].content = '';
+  });
   return data;
 };
 
@@ -103,7 +107,7 @@ const QuestTree = props => {
   return (
     <div className="Tree">
       <SkillProvider>
-        <SkillTreeGroup>
+        <SkillTreeGroup theme={theme}>
           {() => {
             return (
               <React.Fragment>

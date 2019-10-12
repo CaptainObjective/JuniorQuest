@@ -1,6 +1,7 @@
 import React from 'react';
 // import './Drawer.css';
-import { Menu, Segment, Sidebar } from 'semantic-ui-react';
+import { Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom';
 
 class Drawer extends React.Component {
   state = { visible: false };
@@ -8,11 +9,11 @@ class Drawer extends React.Component {
   handleShowClick = () => this.setState({ visible: true });
   handleSidebarHide = () => this.setState({ visible: false });
 
-  // componentDidMount () {
-  //     console.log("Drawer props:")
-  //     console.log(this.props)
-  // }
-
+  componentDidMount () {
+      console.log("Drawer props:")
+      console.log(document.cookie)
+  }
+  
   render() {
     // const { visible } = this.state
 
@@ -28,14 +29,25 @@ class Drawer extends React.Component {
             onHide={this.handleSidebarHide}
             vertical
             visible={this.props.drawer}
-            width="very wide"
-          >
-            <Menu.Item>Avatar {this.props.avatar}</Menu.Item>
-            <Menu.Item>Email: {this.props.props.email}</Menu.Item>
-            <Menu.Item>Name: {this.props.props.fullName}</Menu.Item>
-            <Menu.Item>Mentor: {this.props.props.mentor ? this.props.props.mentor.fullName : ''}</Menu.Item>
-            <Menu.Item>Gold: {this.props.props.gold}</Menu.Item>
-            <Menu.Item>Level: {this.props.level}</Menu.Item>
+            width='thin'
+          > <Menu.Item >
+              <img src='https://www.flaticon.com/premium-icon/icons/svg/1146/1146325.svg' style={{ width: '120px', marginLeft: 'auto', marginRight: 'auto'}} />
+          </Menu.Item>
+            <Menu.Item>
+              Email:  {this.props.props.email}
+            </Menu.Item>
+            <Menu.Item>
+              Imię: {this.props.props.fullName}
+            </Menu.Item>
+            <Menu.Item>
+              Mentor: Yoda Mistrz
+            </Menu.Item>
+            <Menu.Item>
+              Złoto: {this.props.props.gold}
+            </Menu.Item>
+            <Menu.Item>
+              Doświadczenie: {this.props.props.exp}
+            </Menu.Item>
             <Menu.Item onClick={this.props.logOut}>Log out</Menu.Item>
           </Sidebar>
 
