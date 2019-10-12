@@ -4,6 +4,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { Menu } from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import TreeTest from '../Components/Tree/Test';
+import Slider from '../Components/Slider';
+import './style.css';
 
 const Get_User = gql`
   {
@@ -23,8 +25,9 @@ const Home = () => {
   console.log(data);
   return (
     <>
-      <Menu>
-        <Menu.Item
+    <div className = "navbar">
+      <Menu inverted>
+        <Menu.Item 
           as={NavLink}
           to="/"
           name="quests"
@@ -32,8 +35,8 @@ const Home = () => {
           onClick={() => setActive((activeItem = 'quests'))}
         >
           Quests
-        </Menu.Item>
-        <Menu.Item
+        </Menu.Item >
+        <Menu.Item color = "red" 
           as={NavLink}
           to="/"
           name="rewards"
@@ -43,8 +46,13 @@ const Home = () => {
           Rewards
         </Menu.Item>
       </Menu>
-      <div>
+      </div>
+        
+      <div className="Container">
+        <div className="mainStuff">
+        <Slider />
         <TreeTest />
+        </div>
       </div>
     </>
   );
