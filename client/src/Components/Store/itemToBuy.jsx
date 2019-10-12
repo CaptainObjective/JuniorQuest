@@ -17,7 +17,7 @@ const buy_item = gql`
 `;
 
 const ItemToBuy = props => {
-  console.log(props);
+  // console.log(props);
   const [buyItem, { data }] = useMutation(buy_item, {
     variables: {
       where: { id: props.me.id },
@@ -35,7 +35,9 @@ const ItemToBuy = props => {
   return (
     <Segment circular style={square}>
       <Header as="h4">
-        <Header.Subheader>{props.icon}</Header.Subheader>
+        <Header.Subheader>
+          <img src={props.icon} alt={props.icon} />
+        </Header.Subheader>
         {props.name}
         <Header.Subheader>
           <Button as="div" labelPosition="right" onClick={onButtonClick}>

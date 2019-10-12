@@ -7,7 +7,9 @@ const ItemBought = props => {
   return (
     <Segment circular style={square}>
       <Header as="h4">
-        <Header.Subheader>{props.icon}</Header.Subheader>
+        <Header.Subheader>
+          <img src={props.icon} alt={props.icon} />
+        </Header.Subheader>
         {props.name}
       </Header>
     </Segment>
