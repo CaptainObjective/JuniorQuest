@@ -25,8 +25,8 @@ const Home = ({children, toggleDrawer}) => {
   
   return (
     <Container>
-      <Menu>
-        <Menu.Item
+      <Menu inverted>
+        <Menu.Item inverted color="blue"
           as={NavLink}
           to="/nodeTree"
           name="quests"
@@ -34,8 +34,8 @@ const Home = ({children, toggleDrawer}) => {
           onClick={() => setActive((activeItem = 'quests'))}
         >
           Wyzwania
-        </Menu.Item>
-        <Menu.Item
+        </Menu.Item >
+        <Menu.Item inverted color="blue"
           as={NavLink}
           to="/store"
           name="rewards"
@@ -43,12 +43,13 @@ const Home = ({children, toggleDrawer}) => {
           onClick={() => setActive((activeItem = 'rewards'))}
         >
           Nagrody
-        </Menu.Item>
-          <Button icon onClick={(e)=>{toggleDrawer()}} >
+        </Menu.Item >
+          <Button icon inverted color="blue" onClick={(e)=>{toggleDrawer()}} >
             <Icon name='align justify'   />
           </Button>
       </Menu>
       <>
+      <Slider />
       {children}
       </>
     </Container>
