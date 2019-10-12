@@ -15,6 +15,9 @@
     margin-top: 20px;
 }
 
+.blured{
+    backdrop-filter: blur(10px);
+}
 .ui.labeled.button:not([class*="left labeled"])>.label {
     background-color: #54c8ff;
 }

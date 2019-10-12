@@ -13,7 +13,7 @@ const ItemBought = props => {
         inverted
         position="right center"
         trigger={
-          <Segment inverted circular style={square}>
+          <Segment inverted circular style={square} className="blured">
             <Header as="h4">
               <Header.Subheader>
                 <img src={props.icon} alt="ikona zadania" style={{ maxWidth: '75px' }} />
