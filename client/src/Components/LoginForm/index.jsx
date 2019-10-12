@@ -35,12 +35,15 @@ const LoginForm = () => {
 
   return (
     <Container>
-      <Segment className="segment-blur">
+      <Segment style={{width: '40%', marginLeft: 'auto', marginRight: 'auto'}}
+      className="segment-blur">
         <Image src={src1} size='medium' centered />
         <Header inverted as="h2">Logowanie</Header>        
         {/* {this.state.invalidData && <NegativeMessage header="Błędny email lub hasło" />} */}
-        <Form onSubmit={onFormSubmit}>
+        <Form onSubmit={onFormSubmit}
+        >
           <Form.Input
+          
             name="email"
             type="email"
             label="Email"
