@@ -51,5 +51,7 @@
     margin-top:20px;
 }
 
-
+img.Icon__Image-sc-191z50v-1 {
+    filter: invert(100%) !important;
+}
 
