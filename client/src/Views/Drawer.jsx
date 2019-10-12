@@ -31,7 +31,7 @@ class Drawer extends React.Component {
             visible={this.props.drawer}
             width='thin'
           > <Menu.Item >
-              Avatar {this.props.avatar}
+              <img src='https://www.flaticon.com/premium-icon/icons/svg/1146/1146325.svg' style={{ width: '120px', marginLeft: 'auto', marginRight: 'auto'}} />
           </Menu.Item>
             <Menu.Item>
               Email:  {this.props.props.email}
@@ -40,7 +40,7 @@ class Drawer extends React.Component {
               Imię: {this.props.props.fullName}
             </Menu.Item>
             <Menu.Item>
-              Mentor: {this.props.props.mentor? this.props.props.mentor.fullName: ''}
+              Mentor: Yoda Mistrz
             </Menu.Item>
             <Menu.Item>
               Złoto: {this.props.props.gold}
