@@ -18,7 +18,17 @@ const treeDataInit = [
         tooltip: {
           description: 'Node 2',
         },
-        children: [],
+        children: [
+          {
+            id: 'node4',
+            title: 'Node 4',
+            finished: false,
+            tooltip: {
+              description: 'Node 2',
+            },
+            children: [],
+          },
+        ],
       },
       {
         id: 'node3',
@@ -33,14 +43,43 @@ const treeDataInit = [
   },
 ];
 
+const skillsToArray = skills => {
+  const arr = [];
+  for (let name in skills) {
+    arr.push({ name, ...skills[name] });
+  }
+  return arr;
+};
+
 const QuestTree = props => {
   const [tree, setTree] = useState(treeDataInit);
 
-  const skillsToTree = skills => {};
-  treeBfs(tree[0], x => console.log(x.id));
+  const onSelected = node => {
+    props.onNodeSelection(node);
+  };
+
+  const skillsToTree = skills => {
+    const cpySkills = skillsToArray(skills);
+    if (cpySkills.length !== 0) {
+      const newTree = [...tree];
+      treeBfs(newTree[0], x => {
+        const node = cpySkills.find(y => y.name === x.id);
+        if (node) {
+          const state = node.nodeState;
+          if (!x.finished && state === 'selected') {
+            x.finished = true;
+            onSelected({ ...x });
+          }
+          x.finished = node.nodeState === 'selected';
+        }
+      });
+      return newTree;
+    }
+    return tree;
+  };
 
   const handleSave = (storage, treeId, skills) => {
-    skillsToTree();
+    setTree(skillsToTree(skills));
   };
 
   return (
