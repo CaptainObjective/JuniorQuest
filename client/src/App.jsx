@@ -14,6 +14,10 @@ export const me = gql`
     me {
       email
       fullName
+      mentor {
+        fullName
+      }
+      gold
     }
   }
 `;
@@ -27,10 +31,7 @@ const App = () => {
 
   if (!data.me && window.location.pathname !== '/login') return <Redirect to="/login" />;
   // if (data.me && window.location.pathname !== '/') return <Redirect to="/" />;
-  const {email, name, mentor, gold, level} = data.me;
-  console.log("Data me:");
-  console.log(data.me);
-  console.log(email);
+  
 
   const toggleDrawer = ()=>{
     setDrawer(!drawer)
@@ -39,7 +40,7 @@ const App = () => {
   return (
     <Switch>
         <Route path="/login" component={Login} />
-      <Drawer drawer={drawer}>
+      <Drawer drawer={drawer} props={data.me}>
         <>
         <Home toggleDrawer={toggleDrawer}>
           <Route path="/store" component={Store} />
