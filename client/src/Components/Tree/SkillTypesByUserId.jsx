@@ -6,7 +6,15 @@ import { useQuery } from '@apollo/react-hooks';
 
 export const get_skillTypesByUserId = gql`
   {
-    skillTypes(where: { user: { id: "ck1mibvtbxu450908dz4a8pdy" } }) {
+    skillTypes(
+      where: {
+        OR: [
+          { id: "ck1mwuk2nure509937i07vvsm" }
+          { id: "ck1mtl7ntua2j0993wgb7fxfe" }
+          { id: "ck1mvud4s06bf0908pyopro80" }
+        ]
+      }
+    ) {
       id
       title
       description

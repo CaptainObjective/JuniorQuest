@@ -6,7 +6,6 @@ import { get_skillTypesByUserId } from './SkillTypesByUserId';
 import { useQuery } from '@apollo/react-hooks';
 import Slider from '../Slider';
 
-
 const treeDataInit = [
   {
     id: 'node1',
@@ -77,7 +76,7 @@ const QuestTree = props => {
   //   console.log(data);
   //   if (data) setTree([tooltipFix({ ...data.skillTypes[0] })]);
   // }, []);
-  console.log(tree);
+  // console.log(tree);
   const onSelected = node => {
     props.onNodeSelection(node);
   };
@@ -115,7 +114,13 @@ const QuestTree = props => {
               <div>
                 <Slider />
                 <React.Fragment>
-                  <SkillTree treeId="basic-birch" title="HTML i CSS" data={tree} handleSave={handleSave} savedData={{}} />
+                  <SkillTree
+                    treeId="basic-birch"
+                    title="HTML i CSS"
+                    data={tree}
+                    handleSave={handleSave}
+                    savedData={{}}
+                  />
                 </React.Fragment>
               </div>
             );
