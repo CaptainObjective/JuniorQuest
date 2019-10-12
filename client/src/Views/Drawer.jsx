@@ -1,6 +1,7 @@
 import React from 'react';
 // import './Drawer.css';
 import { Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom';
 
 class Drawer extends React.Component {
     state = { visible: false }
@@ -8,11 +9,11 @@ class Drawer extends React.Component {
   handleShowClick = () => this.setState({ visible: true })
   handleSidebarHide = () => this.setState({ visible: false })
 
-  // componentDidMount () {
-  //     console.log("Drawer props:")
-  //     console.log(this.props)
-  // }
-
+  componentDidMount () {
+      console.log("Drawer props:")
+      console.log(document.cookie)
+  }
+  
   render() {
     // const { visible } = this.state
 
@@ -36,18 +37,18 @@ class Drawer extends React.Component {
               Email:  {this.props.props.email}
             </Menu.Item>
             <Menu.Item>
-              Name: {this.props.props.fullName}
+              Imię: {this.props.props.fullName}
             </Menu.Item>
             <Menu.Item>
               Mentor: {this.props.props.mentor? this.props.props.mentor.fullName: ''}
             </Menu.Item>
             <Menu.Item>
-              Gold: {this.props.props.gold}
+              Złoto: {this.props.props.gold}
             </Menu.Item>
             <Menu.Item>
-              Level: {this.props.level}
+              Doświadczenie: {this.props.props.exp}
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item >
               Log out
             </Menu.Item>
           </Sidebar>

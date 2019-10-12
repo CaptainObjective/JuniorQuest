@@ -18,6 +18,7 @@ export const me = gql`
         fullName
       }
       gold
+      exp
     }
   }
 `;
