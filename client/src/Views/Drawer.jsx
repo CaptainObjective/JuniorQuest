@@ -29,7 +29,7 @@ class Drawer extends React.Component {
             onHide={this.handleSidebarHide}
             vertical
             visible={this.props.drawer}
-            width='very wide'
+            width='thin'
           > <Menu.Item >
               Avatar {this.props.avatar}
           </Menu.Item>
