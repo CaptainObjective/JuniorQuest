@@ -9,7 +9,7 @@ class Drawer extends React.Component {
   handleSidebarHide = () => this.setState({ visible: false })
 
   componentDidMount () {
-      console.log("error")
+      console.log("Drawer children:")
       console.log(this.props.children)
   }
 
@@ -37,7 +37,10 @@ class Drawer extends React.Component {
               Avatar {this.props.avatar}
           </Menu.Item>
             <Menu.Item>
-              Name {this.props.name}
+              Email:  {this.props.email}
+            </Menu.Item>
+            <Menu.Item>
+              Name: {this.props.name}
             </Menu.Item>
             <Menu.Item>
               Mentor: {this.props.mentor}

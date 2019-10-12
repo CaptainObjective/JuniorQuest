@@ -9,7 +9,7 @@ const toBuy = props => {
   return (
     <div>
       {itemsToBuy.map(e => (
-        <ItemToBuy key={`toBuy-${e.name}`} {...e} />
+        <ItemToBuy me={props.me} key={`toBuy-${e.name}`} {...e} />
       ))}
     </div>
   );

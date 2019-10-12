@@ -1,11 +1,7 @@
 # source: https://eu1.prisma.sh/marcin-wos-8d1ccd/juniorquest/dev
-# timestamp: Fri Oct 11 2019 23:32:56 GMT+0200 (GMT+02:00)
+# timestamp: Sat Oct 12 2019 02:44:52 GMT+0200 (GMT+02:00)
 
 type AggregateSkillType {
-  count: Int!
-}
-
-type AggregateStore {
   count: Int!
 }
 
@@ -33,36 +29,30 @@ Long can represent values between -(2^63) and 2^63 - 1.
 scalar Long
 
 type Mutation {
-  createStore(data: StoreCreateInput!): Store!
   createUser(data: UserCreateInput!): User!
   createSkillType(data: SkillTypeCreateInput!): SkillType!
-  createTooltip(data: TooltipCreateInput!): Tooltip!
   createStoreItem(data: StoreItemCreateInput!): StoreItem!
-  updateStore(data: StoreUpdateInput!, where: StoreWhereUniqueInput!): Store
+  createTooltip(data: TooltipCreateInput!): Tooltip!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateSkillType(data: SkillTypeUpdateInput!, where: SkillTypeWhereUniqueInput!): SkillType
-  updateTooltip(data: TooltipUpdateInput!, where: TooltipWhereUniqueInput!): Tooltip
   updateStoreItem(data: StoreItemUpdateInput!, where: StoreItemWhereUniqueInput!): StoreItem
-  deleteStore(where: StoreWhereUniqueInput!): Store
+  updateTooltip(data: TooltipUpdateInput!, where: TooltipWhereUniqueInput!): Tooltip
   deleteUser(where: UserWhereUniqueInput!): User
   deleteSkillType(where: SkillTypeWhereUniqueInput!): SkillType
-  deleteTooltip(where: TooltipWhereUniqueInput!): Tooltip
   deleteStoreItem(where: StoreItemWhereUniqueInput!): StoreItem
-  upsertStore(where: StoreWhereUniqueInput!, create: StoreCreateInput!, update: StoreUpdateInput!): Store!
+  deleteTooltip(where: TooltipWhereUniqueInput!): Tooltip
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   upsertSkillType(where: SkillTypeWhereUniqueInput!, create: SkillTypeCreateInput!, update: SkillTypeUpdateInput!): SkillType!
-  upsertTooltip(where: TooltipWhereUniqueInput!, create: TooltipCreateInput!, update: TooltipUpdateInput!): Tooltip!
   upsertStoreItem(where: StoreItemWhereUniqueInput!, create: StoreItemCreateInput!, update: StoreItemUpdateInput!): StoreItem!
-  updateManyStores(data: StoreUpdateManyMutationInput!, where: StoreWhereInput): BatchPayload!
+  upsertTooltip(where: TooltipWhereUniqueInput!, create: TooltipCreateInput!, update: TooltipUpdateInput!): Tooltip!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   updateManySkillTypes(data: SkillTypeUpdateManyMutationInput!, where: SkillTypeWhereInput): BatchPayload!
-  updateManyTooltips(data: TooltipUpdateManyMutationInput!, where: TooltipWhereInput): BatchPayload!
   updateManyStoreItems(data: StoreItemUpdateManyMutationInput!, where: StoreItemWhereInput): BatchPayload!
-  deleteManyStores(where: StoreWhereInput): BatchPayload!
+  updateManyTooltips(data: TooltipUpdateManyMutationInput!, where: TooltipWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteManySkillTypes(where: SkillTypeWhereInput): BatchPayload!
-  deleteManyTooltips(where: TooltipWhereInput): BatchPayload!
   deleteManyStoreItems(where: StoreItemWhereInput): BatchPayload!
+  deleteManyTooltips(where: TooltipWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -93,21 +83,18 @@ type PageInfo {
 }
 
 type Query {
-  stores(where: StoreWhereInput, orderBy: StoreOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Store]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   skillTypes(where: SkillTypeWhereInput, orderBy: SkillTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SkillType]!
-  tooltips(where: TooltipWhereInput, orderBy: TooltipOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tooltip]!
   storeItems(where: StoreItemWhereInput, orderBy: StoreItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StoreItem]!
-  store(where: StoreWhereUniqueInput!): Store
+  tooltips(where: TooltipWhereInput, orderBy: TooltipOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tooltip]!
   user(where: UserWhereUniqueInput!): User
   skillType(where: SkillTypeWhereUniqueInput!): SkillType
-  tooltip(where: TooltipWhereUniqueInput!): Tooltip
   storeItem(where: StoreItemWhereUniqueInput!): StoreItem
-  storesConnection(where: StoreWhereInput, orderBy: StoreOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): StoreConnection!
+  tooltip(where: TooltipWhereUniqueInput!): Tooltip
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   skillTypesConnection(where: SkillTypeWhereInput, orderBy: SkillTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SkillTypeConnection!
-  tooltipsConnection(where: TooltipWhereInput, orderBy: TooltipOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TooltipConnection!
   storeItemsConnection(where: StoreItemWhereInput, orderBy: StoreItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): StoreItemConnection!
+  tooltipsConnection(where: TooltipWhereInput, orderBy: TooltipOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TooltipConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -116,12 +103,19 @@ type Query {
   ): Node
 }
 
+enum Role {
+  MENTOR
+  JUNIOR
+  ADMIN
+}
+
 type SkillType implements Node {
   id: ID!
   title: String!
   description: String
+  user: User
   children(where: SkillTypeWhereInput, orderBy: SkillTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SkillType!]
-  parent: SkillType!
+  parent: SkillType
   icon: String
   junior_complete: Boolean
   mentor_complete: Boolean
@@ -149,8 +143,9 @@ input SkillTypeCreateInput {
   mentor_complete: Boolean
   gold: Int
   type: TaskType!
+  user: UserCreateOneInput
   children: SkillTypeCreateManyInput
-  parent: SkillTypeCreateOneInput!
+  parent: SkillTypeCreateOneInput
   Tooltip: TooltipCreateOneInput!
 }
 
@@ -459,8 +454,9 @@ input SkillTypeUpdateDataInput {
   mentor_complete: Boolean
   gold: Int
   type: TaskType
+  user: UserUpdateOneInput
   children: SkillTypeUpdateManyInput
-  parent: SkillTypeUpdateOneRequiredInput
+  parent: SkillTypeUpdateOneInput
   Tooltip: TooltipUpdateOneRequiredInput
 }
 
@@ -472,8 +468,9 @@ input SkillTypeUpdateInput {
   mentor_complete: Boolean
   gold: Int
   type: TaskType
+  user: UserUpdateOneInput
   children: SkillTypeUpdateManyInput
-  parent: SkillTypeUpdateOneRequiredInput
+  parent: SkillTypeUpdateOneInput
   Tooltip: TooltipUpdateOneRequiredInput
 }
 
@@ -514,9 +511,11 @@ input SkillTypeUpdateManyWithWhereNestedInput {
   data: SkillTypeUpdateManyDataInput!
 }
 
-input SkillTypeUpdateOneRequiredInput {
+input SkillTypeUpdateOneInput {
   create: SkillTypeCreateInput
   connect: SkillTypeWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
   update: SkillTypeUpdateDataInput
   upsert: SkillTypeUpsertNestedInput
 }
@@ -746,6 +745,7 @@ input SkillTypeWhereInput {
 
   """All values that are not contained in given list."""
   type_not_in: [TaskType!]
+  user: UserWhereInput
   children_every: SkillTypeWhereInput
   children_some: SkillTypeWhereInput
   children_none: SkillTypeWhereInput
@@ -757,43 +757,13 @@ input SkillTypeWhereUniqueInput {
   id: ID
 }
 
-type Store implements Node {
-  id: ID!
-  store_item(where: StoreItemWhereInput, orderBy: StoreItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StoreItem!]
-  item_quantity: Int
-}
-
-"""A connection to a list of items."""
-type StoreConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [StoreEdge]!
-  aggregate: AggregateStore!
-}
-
-input StoreCreateInput {
-  id: ID
-  item_quantity: Int
-  store_item: StoreItemCreateManyInput
-}
-
-"""An edge in a connection."""
-type StoreEdge {
-  """The item at the end of the edge."""
-  node: Store!
-
-  """A cursor for use in pagination."""
-  cursor: String!
-}
-
 type StoreItem implements Node {
   id: ID!
   name: String!
   desctription: String
   price: Int
   icon: String
+  quantity: Int
 }
 
 """A connection to a list of items."""
@@ -812,6 +782,7 @@ input StoreItemCreateInput {
   desctription: String
   price: Int
   icon: String
+  quantity: Int
 }
 
 input StoreItemCreateManyInput {
@@ -839,6 +810,8 @@ enum StoreItemOrderByInput {
   price_DESC
   icon_ASC
   icon_DESC
+  quantity_ASC
+  quantity_DESC
 }
 
 type StoreItemPreviousValues {
@@ -847,6 +820,7 @@ type StoreItemPreviousValues {
   desctription: String
   price: Int
   icon: String
+  quantity: Int
 }
 
 input StoreItemScalarWhereInput {
@@ -1040,6 +1014,28 @@ input StoreItemScalarWhereInput {
 
   """All values not ending with the given string."""
   icon_not_ends_with: String
+  quantity: Int
+
+  """All values that are not equal to given value."""
+  quantity_not: Int
+
+  """All values that are contained in given list."""
+  quantity_in: [Int!]
+
+  """All values that are not contained in given list."""
+  quantity_not_in: [Int!]
+
+  """All values less than the given value."""
+  quantity_lt: Int
+
+  """All values less than or equal the given value."""
+  quantity_lte: Int
+
+  """All values greater than the given value."""
+  quantity_gt: Int
+
+  """All values greater than or equal the given value."""
+  quantity_gte: Int
 }
 
 type StoreItemSubscriptionPayload {
@@ -1084,6 +1080,7 @@ input StoreItemUpdateDataInput {
   desctription: String
   price: Int
   icon: String
+  quantity: Int
 }
 
 input StoreItemUpdateInput {
@@ -1091,6 +1088,7 @@ input StoreItemUpdateInput {
   desctription: String
   price: Int
   icon: String
+  quantity: Int
 }
 
 input StoreItemUpdateManyDataInput {
@@ -1098,6 +1096,7 @@ input StoreItemUpdateManyDataInput {
   desctription: String
   price: Int
   icon: String
+  quantity: Int
 }
 
 input StoreItemUpdateManyInput {
@@ -1117,6 +1116,7 @@ input StoreItemUpdateManyMutationInput {
   desctription: String
   price: Int
   icon: String
+  quantity: Int
 }
 
 input StoreItemUpdateManyWithWhereNestedInput {
@@ -1326,6 +1326,28 @@ input StoreItemWhereInput {
 
   """All values not ending with the given string."""
   icon_not_ends_with: String
+  quantity: Int
+
+  """All values that are not equal to given value."""
+  quantity_not: Int
+
+  """All values that are contained in given list."""
+  quantity_in: [Int!]
+
+  """All values that are not contained in given list."""
+  quantity_not_in: [Int!]
+
+  """All values less than the given value."""
+  quantity_lt: Int
+
+  """All values less than or equal the given value."""
+  quantity_lte: Int
+
+  """All values greater than the given value."""
+  quantity_gt: Int
+
+  """All values greater than or equal the given value."""
+  quantity_gte: Int
 }
 
 input StoreItemWhereUniqueInput {
@@ -1333,150 +1355,11 @@ input StoreItemWhereUniqueInput {
   name: String
 }
 
-enum StoreOrderByInput {
-  id_ASC
-  id_DESC
-  item_quantity_ASC
-  item_quantity_DESC
-}
-
-type StorePreviousValues {
-  id: ID!
-  item_quantity: Int
-}
-
-type StoreSubscriptionPayload {
-  mutation: MutationType!
-  node: Store
-  updatedFields: [String!]
-  previousValues: StorePreviousValues
-}
-
-input StoreSubscriptionWhereInput {
-  """Logical AND on all given filters."""
-  AND: [StoreSubscriptionWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [StoreSubscriptionWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [StoreSubscriptionWhereInput!]
-
-  """The subscription event gets dispatched when it's listed in mutation_in"""
-  mutation_in: [MutationType!]
-
-  """
-  The subscription event gets only dispatched when one of the updated fields names is included in this list
-  """
-  updatedFields_contains: String
-
-  """
-  The subscription event gets only dispatched when all of the field names included in this list have been updated
-  """
-  updatedFields_contains_every: [String!]
-
-  """
-  The subscription event gets only dispatched when some of the field names included in this list have been updated
-  """
-  updatedFields_contains_some: [String!]
-  node: StoreWhereInput
-}
-
-input StoreUpdateInput {
-  item_quantity: Int
-  store_item: StoreItemUpdateManyInput
-}
-
-input StoreUpdateManyMutationInput {
-  item_quantity: Int
-}
-
-input StoreWhereInput {
-  """Logical AND on all given filters."""
-  AND: [StoreWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [StoreWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [StoreWhereInput!]
-  id: ID
-
-  """All values that are not equal to given value."""
-  id_not: ID
-
-  """All values that are contained in given list."""
-  id_in: [ID!]
-
-  """All values that are not contained in given list."""
-  id_not_in: [ID!]
-
-  """All values less than the given value."""
-  id_lt: ID
-
-  """All values less than or equal the given value."""
-  id_lte: ID
-
-  """All values greater than the given value."""
-  id_gt: ID
-
-  """All values greater than or equal the given value."""
-  id_gte: ID
-
-  """All values containing the given string."""
-  id_contains: ID
-
-  """All values not containing the given string."""
-  id_not_contains: ID
-
-  """All values starting with the given string."""
-  id_starts_with: ID
-
-  """All values not starting with the given string."""
-  id_not_starts_with: ID
-
-  """All values ending with the given string."""
-  id_ends_with: ID
-
-  """All values not ending with the given string."""
-  id_not_ends_with: ID
-  item_quantity: Int
-
-  """All values that are not equal to given value."""
-  item_quantity_not: Int
-
-  """All values that are contained in given list."""
-  item_quantity_in: [Int!]
-
-  """All values that are not contained in given list."""
-  item_quantity_not_in: [Int!]
-
-  """All values less than the given value."""
-  item_quantity_lt: Int
-
-  """All values less than or equal the given value."""
-  item_quantity_lte: Int
-
-  """All values greater than the given value."""
-  item_quantity_gt: Int
-
-  """All values greater than or equal the given value."""
-  item_quantity_gte: Int
-  store_item_every: StoreItemWhereInput
-  store_item_some: StoreItemWhereInput
-  store_item_none: StoreItemWhereInput
-}
-
-input StoreWhereUniqueInput {
-  id: ID
-}
-
 type Subscription {
-  store(where: StoreSubscriptionWhereInput): StoreSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   skillType(where: SkillTypeSubscriptionWhereInput): SkillTypeSubscriptionPayload
-  tooltip(where: TooltipSubscriptionWhereInput): TooltipSubscriptionPayload
   storeItem(where: StoreItemSubscriptionWhereInput): StoreItemSubscriptionPayload
+  tooltip(where: TooltipSubscriptionWhereInput): TooltipSubscriptionPayload
 }
 
 enum TaskType {
@@ -1717,10 +1600,12 @@ type User implements Node {
   email: String!
   password: String!
   fullName: String!
-  type: UserType!
+  role: Role!
   mentor: User
   juniors(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   bought_items(where: StoreItemWhereInput, orderBy: StoreItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StoreItem!]
+  gold: Int!
+  exp: Int!
 }
 
 """A connection to a list of items."""
@@ -1738,7 +1623,9 @@ input UserCreateInput {
   email: String!
   password: String!
   fullName: String!
-  type: UserType
+  role: Role
+  gold: Int
+  exp: Int
   mentor: UserCreateOneInput
   juniors: UserCreateManyInput
   bought_items: StoreItemCreateManyInput
@@ -1772,8 +1659,12 @@ enum UserOrderByInput {
   password_DESC
   fullName_ASC
   fullName_DESC
-  type_ASC
-  type_DESC
+  role_ASC
+  role_DESC
+  gold_ASC
+  gold_DESC
+  exp_ASC
+  exp_DESC
 }
 
 type UserPreviousValues {
@@ -1781,7 +1672,9 @@ type UserPreviousValues {
   email: String!
   password: String!
   fullName: String!
-  type: UserType!
+  role: Role!
+  gold: Int!
+  exp: Int!
 }
 
 input UserScalarWhereInput {
@@ -1953,16 +1846,60 @@ input UserScalarWhereInput {
 
   """All values not ending with the given string."""
   fullName_not_ends_with: String
-  type: UserType
+  role: Role
 
   """All values that are not equal to given value."""
-  type_not: UserType
+  role_not: Role
 
   """All values that are contained in given list."""
-  type_in: [UserType!]
+  role_in: [Role!]
 
   """All values that are not contained in given list."""
-  type_not_in: [UserType!]
+  role_not_in: [Role!]
+  gold: Int
+
+  """All values that are not equal to given value."""
+  gold_not: Int
+
+  """All values that are contained in given list."""
+  gold_in: [Int!]
+
+  """All values that are not contained in given list."""
+  gold_not_in: [Int!]
+
+  """All values less than the given value."""
+  gold_lt: Int
+
+  """All values less than or equal the given value."""
+  gold_lte: Int
+
+  """All values greater than the given value."""
+  gold_gt: Int
+
+  """All values greater than or equal the given value."""
+  gold_gte: Int
+  exp: Int
+
+  """All values that are not equal to given value."""
+  exp_not: Int
+
+  """All values that are contained in given list."""
+  exp_in: [Int!]
+
+  """All values that are not contained in given list."""
+  exp_not_in: [Int!]
+
+  """All values less than the given value."""
+  exp_lt: Int
+
+  """All values less than or equal the given value."""
+  exp_lte: Int
+
+  """All values greater than the given value."""
+  exp_gt: Int
+
+  """All values greater than or equal the given value."""
+  exp_gte: Int
 }
 
 type UserSubscriptionPayload {
@@ -2002,17 +1939,13 @@ input UserSubscriptionWhereInput {
   node: UserWhereInput
 }
 
-enum UserType {
-  MENTOR
-  JUNIOR
-  ADMIN
-}
-
 input UserUpdateDataInput {
   email: String
   password: String
   fullName: String
-  type: UserType
+  role: Role
+  gold: Int
+  exp: Int
   mentor: UserUpdateOneInput
   juniors: UserUpdateManyInput
   bought_items: StoreItemUpdateManyInput
@@ -2022,7 +1955,9 @@ input UserUpdateInput {
   email: String
   password: String
   fullName: String
-  type: UserType
+  role: Role
+  gold: Int
+  exp: Int
   mentor: UserUpdateOneInput
   juniors: UserUpdateManyInput
   bought_items: StoreItemUpdateManyInput
@@ -2032,7 +1967,9 @@ input UserUpdateManyDataInput {
   email: String
   password: String
   fullName: String
-  type: UserType
+  role: Role
+  gold: Int
+  exp: Int
 }
 
 input UserUpdateManyInput {
@@ -2051,7 +1988,9 @@ input UserUpdateManyMutationInput {
   email: String
   password: String
   fullName: String
-  type: UserType
+  role: Role
+  gold: Int
+  exp: Int
 }
 
 input UserUpdateManyWithWhereNestedInput {
@@ -2253,16 +2192,60 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   fullName_not_ends_with: String
-  type: UserType
+  role: Role
 
   """All values that are not equal to given value."""
-  type_not: UserType
+  role_not: Role
 
   """All values that are contained in given list."""
-  type_in: [UserType!]
+  role_in: [Role!]
 
   """All values that are not contained in given list."""
-  type_not_in: [UserType!]
+  role_not_in: [Role!]
+  gold: Int
+
+  """All values that are not equal to given value."""
+  gold_not: Int
+
+  """All values that are contained in given list."""
+  gold_in: [Int!]
+
+  """All values that are not contained in given list."""
+  gold_not_in: [Int!]
+
+  """All values less than the given value."""
+  gold_lt: Int
+
+  """All values less than or equal the given value."""
+  gold_lte: Int
+
+  """All values greater than the given value."""
+  gold_gt: Int
+
+  """All values greater than or equal the given value."""
+  gold_gte: Int
+  exp: Int
+
+  """All values that are not equal to given value."""
+  exp_not: Int
+
+  """All values that are contained in given list."""
+  exp_in: [Int!]
+
+  """All values that are not contained in given list."""
+  exp_not_in: [Int!]
+
+  """All values less than the given value."""
+  exp_lt: Int
+
+  """All values less than or equal the given value."""
+  exp_lte: Int
+
+  """All values greater than the given value."""
+  exp_gt: Int
+
+  """All values greater than or equal the given value."""
+  exp_gte: Int
   mentor: UserWhereInput
   juniors_every: UserWhereInput
   juniors_some: UserWhereInput

@@ -13,6 +13,7 @@ export const me = gql`
   query me {
     me {
       email
+      fullName
     }
   }
 `;
@@ -26,6 +27,10 @@ const App = () => {
 
   if (!data.me && window.location.pathname !== '/login') return <Redirect to="/login" />;
   // if (data.me && window.location.pathname !== '/') return <Redirect to="/" />;
+  const {email, name, mentor, gold, level} = data.me;
+  console.log("Data me:");
+  console.log(data.me);
+  console.log(email);
 
   const toggleDrawer = ()=>{
     setDrawer(!drawer)
