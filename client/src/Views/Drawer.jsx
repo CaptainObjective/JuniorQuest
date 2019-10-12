@@ -1,11 +1,10 @@
 import React from 'react';
 // import './Drawer.css';
-import { Button, Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Menu, Segment, Sidebar } from 'semantic-ui-react'
 
 class Drawer extends React.Component {
     state = { visible: false }
 
-  handleHideClick = () => this.setState({ visible: false })
   handleShowClick = () => this.setState({ visible: true })
   handleSidebarHide = () => this.setState({ visible: false })
 
@@ -19,9 +18,9 @@ class Drawer extends React.Component {
 
     return (
         <>
-            <Button icon>
+            {/* <Button icon>
                 <Icon name='align justify' disabled={visible} onClick={this.handleShowClick} />
-            </Button>
+            </Button> */}
 
         <Sidebar.Pushable as={Segment}>
           <Sidebar
@@ -32,7 +31,7 @@ class Drawer extends React.Component {
             inverted
             onHide={this.handleSidebarHide}
             vertical
-            visible={visible}
+            visible={this.props.drawer}
             width='very wide'
           > <Menu.Item >
               Avatar {this.props.avatar}

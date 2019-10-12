@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { Menu } from 'semantic-ui-react';
+import { Menu,Icon, Button, Container } from 'semantic-ui-react';
 import gql from 'graphql-tag';
-import TreeTest from '../Components/Tree/Test';
+
 
 const Get_User = gql`
   {
@@ -13,7 +13,7 @@ const Get_User = gql`
   }
 `;
 
-const Home = () => {
+const Home = ({children, toggleDrawer}) => {
   const { data, loading, error } = useQuery(Get_User);
   let [activeItem, setActive] = useState('quests');
 
@@ -22,31 +22,34 @@ const Home = () => {
 
   console.log(data);
   return (
-    <>
+    <Container>
       <Menu>
         <Menu.Item
           as={NavLink}
-          to="/"
+          to="/nodeTree"
           name="quests"
           active={activeItem === 'quests'}
           onClick={() => setActive((activeItem = 'quests'))}
         >
-          Quests
+          Wyzwania
         </Menu.Item>
         <Menu.Item
           as={NavLink}
-          to="/"
+          to="/store"
           name="rewards"
           active={activeItem === 'rewards'}
           onClick={() => setActive((activeItem = 'rewards'))}
         >
-          Rewards
+          Nagrody
         </Menu.Item>
+          <Button icon onClick={(e)=>{toggleDrawer()}} >
+            <Icon name='align justify'   />
+          </Button>
       </Menu>
-      <div>
-        <TreeTest />
-      </div>
-    </>
+      <>
+      {children}
+      </>
+    </Container>
   );
 };
 
