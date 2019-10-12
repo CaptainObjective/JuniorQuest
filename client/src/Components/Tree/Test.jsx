@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import QuestTree from './QuestTree';
 import QuestModal from '../Modals/QuestModal';
+import { Icon } from 'semantic-ui-react';
 
 const TreeTest = props => {
   const [modalData, setModalData] = useState({ isModalOpen: false });
@@ -21,9 +22,14 @@ const TreeTest = props => {
           setModalData({ node, isModalOpen: true });
         }}
       />
-      <QuestModal {...{ isModalOpen, onClose, onFinish }}>
-        <p>Text</p>
-      </QuestModal>
+      {node && (
+        <QuestModal {...{ isModalOpen, onClose, onFinish, header: node.title }}>
+          <p>{node.description}</p>
+          <p>
+            Nagroda: {node.gold} <Icon name="bitcoin" size="large"></Icon>
+          </p>
+        </QuestModal>
+      )}
     </React.Fragment>
   );
 };

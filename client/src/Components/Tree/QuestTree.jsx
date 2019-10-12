@@ -55,7 +55,10 @@ const skillsToArray = skills => {
 };
 
 const tooltipFix = data => {
-  treeBfs(data, x => (x['tooltip'] = x.Tooltip));
+  treeBfs(data, x => {
+    x['tooltip'] = x.Tooltip;
+    x['tooltip'].content = '';
+  });
   return data;
 };
 
