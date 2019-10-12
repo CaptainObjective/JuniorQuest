@@ -35,7 +35,7 @@ const ItemToBuy = props => {
   };
 
   return (
-    <div style={{ display: 'inline-block' }}>
+    <div style={{ display: 'inline-block', margin: '5px' }}>
       <Popup
         content={props.desctription}
         key={props.name}

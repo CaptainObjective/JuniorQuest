@@ -43,7 +43,7 @@ class Drawer extends React.Component {
               Mentor: Yoda Mistrz
             </Menu.Item>
             <Menu.Item>
-              Złoto: {this.props.props.gold}
+              Kredyty: {this.props.props.gold}
             </Menu.Item>
             <Menu.Item>
               Doświadczenie: {this.props.props.exp}
